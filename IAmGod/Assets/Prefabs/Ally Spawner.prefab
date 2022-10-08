@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 4534712069583030284}
   - component: {fileID: 4534712069583030285}
   - component: {fileID: 4534712069583030286}
+  - component: {fileID: -1192333114004447539}
   m_Layer: 0
   m_Name: Ally Spawner
   m_TagString: Untagged
@@ -95,7 +96,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b6cdacd1488715c46adb009a8046a601, type: 2}
+  - {fileID: 2100000, guid: e55ccc86f7dbeff468b6edcdbeb6789d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -143,3 +144,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 4534712068041263177}
+--- !u!208 &-1192333114004447539
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4534712069583030287}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5

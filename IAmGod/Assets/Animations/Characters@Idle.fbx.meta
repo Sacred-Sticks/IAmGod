@@ -8,7 +8,7 @@ ModelImporter:
     second: mixamo.com
   - first:
       74: -6930710874503605911
-    second: Slow Run
+    second: Idle
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -45,7 +45,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Slow Run
+      name: Idle
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
@@ -780,11 +780,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 1
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 42f38a01552728f439fd6657130794b7, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

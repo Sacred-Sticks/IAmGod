@@ -17,23 +17,21 @@ public class Character : MonoBehaviour
     private float timer = 0f;
     private float maxtimer = 1f;
     private Vector3 _randomPoint;
-    private Transform current;
-    private Transform previous;
+    private Vector3 previous;
+    private float velocity;
 
     void Start()
     {
-        current = gameObject.transform;
-        previous = gameObject.transform;
         target = null;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = RandomNavSphere(gameObject.transform.position, 2f, 3);
     }
     private void Update()
     {
-        current = gameObject.transform; //Get and set velocity for animation
-        var velocity = (current.position - previous.position) / Time.deltaTime;
-        previous = gameObject.transform;
-        anim.SetFloat("Velocity", velocity.sqrMagnitude);
+        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;    
+        previous = transform.position;
+        Debug.Log(velocity);
+        anim.SetFloat("Velocity", velocity);
 
         timer += Time.deltaTime;
         if(timer > maxtimer) {

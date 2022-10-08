@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
                 }
             }
             Instantiate(ally ? ALLY : ENEMIES[rand.Next(ENEMIES.Count)].enemy, s.SpawnPoint.transform);
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(.2f);
         }
         if (ally)
             _spawningAllies = false;
