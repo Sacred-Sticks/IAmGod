@@ -193,7 +193,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb96bfe1dbd85a84a8f76745bc55ead9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -260,7 +260,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7668830299185360540, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7668830299185360540, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -338,8 +338,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawningData:
-    averageTime: 5
-    timeVariance: 3
+    averageTime: 3
+    timeVariance: 1.5
     positionY: 0.5
     distance: 10
   meteorData:
@@ -358,7 +358,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1801089804
 GameObject:
