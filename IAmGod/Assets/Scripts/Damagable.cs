@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Damagable : MonoBehaviour
 {
-    public int health { get; private set; }
+    public int Health { get; private set; }
+    [SerializeField] private bool Ally;
 
     public void Damage(int dmg) {
-        health -= dmg;
-        if (health <= 0)
+        Health -= dmg;
+        if (Health <= 0) {
+            GameManager.Instance.Death(Ally);
             Destroy(gameObject);
+        }
+            
     }
 }
