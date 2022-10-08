@@ -16,7 +16,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private int _spawnRate = 1;    
 
-    public int Round { private set; get; }
+    public int MaxRounds { get { return maxRounds; } private set { maxRounds = value; } }
+    [SerializeField] private int maxRounds;
+
+    public int Round { get { return round; } private set { round = value; } }
+    [SerializeField] private int round;
+
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
 
@@ -83,6 +88,8 @@ public class GameManager : MonoBehaviour
     private void EndRound()
     {
         Round += 1;
+        if (Round > MaxRounds)
+            EndGame();
         Spawn();
     }
     private void EndGame()
