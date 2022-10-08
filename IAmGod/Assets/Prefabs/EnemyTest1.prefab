@@ -3979,6 +3979,7 @@ GameObject:
   - component: {fileID: 3255374488273174932}
   - component: {fileID: 8300356091267458569}
   - component: {fileID: 1765604307142487006}
+  - component: {fileID: 1490002055794806390}
   m_Layer: 7
   m_Name: EnemyTest1
   m_TagString: Untagged
@@ -4104,6 +4105,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1490002055794806390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116455761096733262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c2b4697b490064e80d0f2f4881c824, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagableDealers:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &6116455761096733802
 GameObject:
   m_ObjectHideFlags: 0

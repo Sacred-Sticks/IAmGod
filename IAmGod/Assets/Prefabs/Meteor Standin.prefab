@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5500288455055443546}
   - component: {fileID: 5392235028380786527}
   - component: {fileID: 6880339569639666339}
+  - component: {fileID: 3013315073955751025}
   m_Layer: 6
   m_Name: Meteor Standin
   m_TagString: Untagged
@@ -191,9 +192,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07d624e06584dff4298e0424c4b9b5a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundLayers:
-    serializedVersion: 2
-    m_Bits: 8
+  explosionData:
+    groundLayers:
+      serializedVersion: 2
+      m_Bits: 8
+    contactExplosion: {fileID: 8312352619560809718, guid: ed082b984b9d034488655988319ae36a, type: 3}
+  attackData:
+    attackLayers:
+      serializedVersion: 2
+      m_Bits: 392
+    damage: 10
 --- !u!114 &6880339569639666339
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +214,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72f91b38e0fb0240be6737a56aefce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waitTime: 10
+--- !u!135 &3013315073955751025
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500288455055443547}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5243409695474628810
 PrefabInstance:
   m_ObjectHideFlags: 0
