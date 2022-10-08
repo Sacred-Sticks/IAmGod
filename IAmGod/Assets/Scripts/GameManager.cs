@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<EnemyChance> ENEMIES;
     private int _totalOdds = 0;
     private List<int> _enemyChanceAccumulator;
-    [SerializeField] private Damagable ALLY;
+    [SerializeField] private Character ALLY;
     [SerializeField] private string GAME_SCENE = "Game";
 
     [SerializeField] private List<Spawn> _allySpawns; //Initialize these with starting ally and enemy spawns
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < amount; i++) {
             System.Random rand = new System.Random();
-            Damagable toBeSpawned;
+            Character toBeSpawned;
             if (ally) {
                 toBeSpawned = ALLY;
                 _allyCount++;
@@ -135,7 +135,7 @@ public class GameManager : MonoBehaviour
     [System.Serializable]
     private class EnemyChance
     {
-        public Damagable enemy;
+        public Character enemy;
         public int odds;
     }
 }

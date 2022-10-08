@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Damagable : MonoBehaviour
+public class Character : MonoBehaviour
 {
     public int Health { get; private set; }
     [SerializeField] private bool Ally;
@@ -11,20 +11,30 @@ public class Damagable : MonoBehaviour
     [SerializeField] private int _damage;
     private NavMeshAgent agent;
     private Transform target;
+    [SerializeField] private Animator anim;
 
     [SerializeField] private float rotationSpeed = 5f;
     private float timer = 0f;
     private float maxtimer = 1f;
     private Vector3 _randomPoint;
+    private Transform current;
+    private Transform previous;
 
     void Start()
     {
+        current = gameObject.transform;
+        previous = gameObject.transform;
         target = null;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = RandomNavSphere(gameObject.transform.position, 2f, 3);
     }
     private void Update()
     {
+        current = gameObject.transform; //Get and set velocity for animation
+        var velocity = (current.position - previous.position) / Time.deltaTime;
+        previous = gameObject.transform;
+        anim.SetFloat("Velocity", velocity.sqrMagnitude);
+
         timer += Time.deltaTime;
         if(timer > maxtimer) {
             timer = 0f;
@@ -49,6 +59,13 @@ public class Damagable : MonoBehaviour
             target = tgt;
             agent.destination = target.transform.position;
         }
+    }
+    public void Attack(Transform tgt)
+    {
+        target = tgt;
+        agent.isStopped = true;
+        //TODO play attacking animation
+        //somehow take in death of target
     }
     public void Damage(int dmg) {
         Health -= dmg;
