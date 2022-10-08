@@ -89,12 +89,12 @@ public class GameManager : MonoBehaviour
                 toBeSpawned = ALLY;
             } else {
                 int pull = rand.Next(_totalOdds); //Really dumb system for relative probability spawning, work though, I think
-                for(int j = 0; i < _enemyChanceAccumulator.Count; i++) {
-                    if (_enemyChanceAccumulator[i] == pull) {
-                        toBeSpawned = ENEMIES[i].enemy;
+                for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
+                    if (_enemyChanceAccumulator[j] == pull) {
+                        toBeSpawned = ENEMIES[j].enemy;
                         break;
-                    } else if (_enemyChanceAccumulator[i] > pull) {
-                        toBeSpawned = ENEMIES[i - 1].enemy;
+                    } else if (_enemyChanceAccumulator[j] > pull) {
+                        toBeSpawned = ENEMIES[j - 1].enemy;
                         break;
                     }                        
                 }
