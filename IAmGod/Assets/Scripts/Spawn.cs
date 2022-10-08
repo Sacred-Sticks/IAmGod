@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Spawn : MonoBehaviour
 {
-    public GameObject SpawnPoint { private set; get; }
-
+    public GameObject SpawnPoint { get { return spawnPoint; } private set { spawnPoint = value; } }
+    [SerializeField] private GameObject spawnPoint;
 }
