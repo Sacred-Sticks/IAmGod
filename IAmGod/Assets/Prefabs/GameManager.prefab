@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 856223491824009617}
-  - component: {fileID: 856223491824009622}
+  - component: {fileID: 3711875921862254121}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &856223491824009622
+--- !u!114 &3711875921862254121
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,15 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1d0548172dea848a0b801bc1be40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ENEMIES:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  ENEMIES: []
   ALLY: {fileID: 0}
   GAME_SCENE: Game
   _allySpawns: []
   _enemySpawns: []
   _spawnRate: 1
-  maxRounds: 60
+  maxRounds: 0
   round: 0

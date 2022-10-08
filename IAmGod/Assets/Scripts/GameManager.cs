@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {    
     private int _enemyCount;
     private int _allyCount;
+    public int KillCount { get; private set; }
 
     [SerializeField] private List<EnemyChance> ENEMIES;
     private int _totalOdds = 0;
@@ -90,15 +91,12 @@ public class GameManager : MonoBehaviour
                 _allyCount++;
             } else {
                 _enemyCount++;
-                int pull = rand.Next(_totalOdds + 1); //Really dumb system for relative probability spawning, work though, I think
+                int pull = rand.Next(_totalOdds) + 1; //Really dumb system for relative probability spawning, work though, I think
                 for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
-                    if (pull == _enemyChanceAccumulator[j] || _enemyChanceAccumulator.Count == 1) {
+                    if (pull <= _enemyChanceAccumulator[j]) {
                         toBeSpawned = ENEMIES[j].enemy;
                         break;
-                    } else if (pull < _enemyChanceAccumulator[j]) {
-                        toBeSpawned = ENEMIES[j - 1].enemy;
-                        break;
-                    }                        
+                    }                      
                 }
             }
             Instantiate(ally ? ALLY : ENEMIES[rand.Next(ENEMIES.Count)].enemy, s.SpawnPoint.transform);
@@ -114,8 +112,10 @@ public class GameManager : MonoBehaviour
     {
         if (ally)
             _allyCount -= 1;
-        else
+        else {
             _enemyCount -= 1;
+            KillCount++;
+        }            
         if (_allyCount <= 0)
             EndGame();
         if (_enemyCount <= 5 && (!_spawningEnemies && !_spawningAllies))
