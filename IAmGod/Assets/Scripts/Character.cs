@@ -34,13 +34,22 @@ public class Character : MonoBehaviour
         anim.SetFloat("Velocity", velocity);
 
         timer += Time.deltaTime;
-        if(timer > maxtimer) {
+        if (agent.isStopped)
+        {
+            if (target == null || Vector3.Distance(gameObject.transform.position, target.position) > 1.6f) {
+                target = null;
+                anim.SetBool("Attacking", false);
+                agent.isStopped = false;
+            }
+                    
+        }
+        if (timer > maxtimer) {
             timer = 0f;
             if(target == null) {
                 _randomPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
                 agent.destination = _randomPoint;
             }                
-        }
+        }        
         if (target == null) {
             MoveTowards(_randomPoint);
             RotateTowards(_randomPoint);
@@ -62,14 +71,15 @@ public class Character : MonoBehaviour
     {
         target = tgt;
         agent.isStopped = true;
-        //TODO play attacking animation
-        //somehow take in death of target
+        anim.SetBool("Attacking", true);
     }
     public void Damage(int dmg) {
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(Ally);
-            Destroy(gameObject);
+            anim.SetBool("Dead", true);
+            anim.SetBool("Attacking", false);
+            Destroy(gameObject, 3f);
         }            
     }
 
