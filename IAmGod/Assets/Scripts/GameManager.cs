@@ -87,13 +87,15 @@ public class GameManager : MonoBehaviour
             Damagable toBeSpawned;
             if (ally) {
                 toBeSpawned = ALLY;
+                _allyCount++;
             } else {
-                int pull = rand.Next(_totalOdds); //Really dumb system for relative probability spawning, work though, I think
+                _enemyCount++;
+                int pull = rand.Next(_totalOdds + 1); //Really dumb system for relative probability spawning, work though, I think
                 for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
-                    if (_enemyChanceAccumulator[j] == pull) {
+                    if (pull == _enemyChanceAccumulator[j] || _enemyChanceAccumulator.Count == 1) {
                         toBeSpawned = ENEMIES[j].enemy;
                         break;
-                    } else if (_enemyChanceAccumulator[j] > pull) {
+                    } else if (pull < _enemyChanceAccumulator[j]) {
                         toBeSpawned = ENEMIES[j - 1].enemy;
                         break;
                     }                        
