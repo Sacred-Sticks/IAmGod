@@ -7,19 +7,21 @@ public class GameManager : MonoBehaviour
 {    
     private int _enemyCount;
     private int _allyCount;
-    [SerializeField] private static GameObject ALLY;
-    [SerializeField] private static GameObject ENEMY;
-    private static string GAME_SCENE = "Game";
-    [SerializeField] private int _spawnRate = 1;
+    [SerializeField] private GameObject ALLY;
+    [SerializeField] private GameObject ENEMY;
+    [SerializeField] private string GAME_SCENE = "Game";
 
     [SerializeField] private List<Spawn> _allySpawns; //Initialize these with starting ally and enemy spawns
     [SerializeField] private List<Spawn> _enemySpawns;
+
+    [SerializeField] private int _spawnRate = 1;    
 
     public int Round { private set; get; }
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
 
-    public static GameManager Instance; //Singleton
+    #region Singleton
+    public static GameManager Instance;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         else
             Instance = this;
     }
+    #endregion
 
     public void Start()
     {

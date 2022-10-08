@@ -12,7 +12,6 @@ public class Damagable : MonoBehaviour
         if (Health <= 0) {
             GameManager.Instance.Death(Ally);
             Destroy(gameObject);
-        }
-            
+        }            
     }
 }
