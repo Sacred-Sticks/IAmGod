@@ -44,9 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c1d0548172dea848a0b801bc1be40b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ENEMIES:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   ALLY: {fileID: 0}
-  ENEMY: {fileID: 0}
   GAME_SCENE: Game
   _allySpawns: []
   _enemySpawns: []
   _spawnRate: 1
+  maxRounds: 60
+  round: 0

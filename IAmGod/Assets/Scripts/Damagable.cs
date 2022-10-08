@@ -6,6 +6,8 @@ public class Damagable : MonoBehaviour
 {
     public int Health { get; private set; }
     [SerializeField] private bool Ally;
+    [SerializeField] private int _health;
+    [SerializeField] private int _damage;
 
     public void Damage(int dmg) {
         Health -= dmg;

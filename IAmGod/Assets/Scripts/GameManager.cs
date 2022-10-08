@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour
 {    
     private int _enemyCount;
     private int _allyCount;
-    [SerializeField] private GameObject ALLY;
-    [SerializeField] private GameObject ENEMY;
+
+    [SerializeField] private List<EnemyChance> ENEMIES;
+    private int _totalOdds = 0;
+    private List<int> _enemyChanceAccumulator;
+    [SerializeField] private Damagable ALLY;
     [SerializeField] private string GAME_SCENE = "Game";
 
     [SerializeField] private List<Spawn> _allySpawns; //Initialize these with starting ally and enemy spawns
@@ -38,6 +41,12 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        _enemyChanceAccumulator = new List<int>();
+        foreach (EnemyChance ec in ENEMIES) {
+            _totalOdds += ec.odds;
+            _enemyChanceAccumulator.Add(_totalOdds);
+        }           
+
         Round = 0;
         EndRound();
     }
@@ -52,6 +61,15 @@ public class GameManager : MonoBehaviour
         else
             return (int)(_spawnRate * (0.5f + mult));
     }
+    private void UpdateOdds(List<EnemyChance> updatedEnemies)
+    {
+        ENEMIES = updatedEnemies;
+        _enemyChanceAccumulator = new List<int>();
+        foreach (EnemyChance ec in ENEMIES) {
+            _totalOdds += ec.odds;
+            _enemyChanceAccumulator.Add(_totalOdds);
+        }
+    }
     private void Spawn()
     {
         _spawningAllies = true;
@@ -65,7 +83,23 @@ public class GameManager : MonoBehaviour
     private IEnumerator HandleSpawn(int amount, Spawn s, bool ally)
     {
         for(int i = 0; i < amount; i++) {
-            Instantiate(ally ? ALLY : ENEMY, s.SpawnPoint.transform);
+            System.Random rand = new System.Random();
+            Damagable toBeSpawned;
+            if (ally) {
+                toBeSpawned = ALLY;
+            } else {
+                int pull = rand.Next(_totalOdds); //Really dumb system for relative probability spawning, work though, I think
+                for(int j = 0; i < _enemyChanceAccumulator.Count; i++) {
+                    if (_enemyChanceAccumulator[i] == pull) {
+                        toBeSpawned = ENEMIES[i].enemy;
+                        break;
+                    } else if (_enemyChanceAccumulator[i] > pull) {
+                        toBeSpawned = ENEMIES[i - 1].enemy;
+                        break;
+                    }                        
+                }
+            }
+            Instantiate(ally ? ALLY : ENEMIES[rand.Next(ENEMIES.Count)].enemy, s.SpawnPoint.transform);
             yield return new WaitForSeconds(.1f);
         }
         if (ally)
@@ -95,5 +129,11 @@ public class GameManager : MonoBehaviour
     private void EndGame()
     {
         SceneManager.LoadScene(GAME_SCENE);        
+    }
+    [System.Serializable]
+    private class EnemyChance
+    {
+        public Damagable enemy;
+        public int odds;
     }
 }

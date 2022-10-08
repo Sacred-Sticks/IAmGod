@@ -352,6 +352,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 856223491824009622, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
+      propertyPath: ENEMIES.Array.data[0]
+      value: 
+      objectReference: {fileID: 3435016172537793021, guid: 37813f413a8e29e4ba959d2fa7f23dc8, type: 3}
+    - target: {fileID: 856223491824009622, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
+      propertyPath: _allySpawns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 856223491824009622, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
+      propertyPath: _enemySpawns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 856223491824009623, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: m_Name
       value: GameManager
