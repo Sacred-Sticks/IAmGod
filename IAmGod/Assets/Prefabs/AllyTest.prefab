@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layerMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 128
 --- !u!1 &6116455761096474646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,7 +1029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6116455761096435918
 Transform:
   m_ObjectHideFlags: 0
@@ -2541,7 +2541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6116455761096456404
 Transform:
   m_ObjectHideFlags: 0
@@ -2577,7 +2577,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2516edcba6fec964787b5492b55edbd1, type: 2}
+  - {fileID: 2100000, guid: 9abd531dc805c984494c5ef16efaeff6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3978,9 +3978,9 @@ GameObject:
   - component: {fileID: 6116455761600567733}
   - component: {fileID: 3255374488273174932}
   - component: {fileID: 8300356091267458569}
-  - component: {fileID: 1765604307142487006}
-  m_Layer: 7
-  m_Name: EnemyTest1
+  - component: {fileID: 2624061902550053697}
+  m_Layer: 8
+  m_Name: AllyTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4047,7 +4047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42dcdd1d882d9454d83933eeb81ffaac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ally: 0
+  Ally: 1
   _health: 10
   _damage: 10
   rotationSpeed: 10
@@ -4086,7 +4086,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!54 &1765604307142487006
+--- !u!54 &2624061902550053697
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
