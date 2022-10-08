@@ -11,8 +11,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private static GameObject ENEMY;
     private static string GAME_SCENE = "Game";
     [SerializeField] private int _spawnRate = 1;
-    private List<Spawn> _allySpawns;
-    private List<Spawn> _enemySpawns;
+
+    [SerializeField] private List<Spawn> _allySpawns; //Initialize these with starting ally and enemy spawns
+    [SerializeField] private List<Spawn> _enemySpawns;
+
     public int Round { private set; get; }
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
@@ -24,7 +26,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         else
             Instance = this;
+    }
 
+    public void Start()
+    {
+        Round = 0;
+        EndRound();
     }
 
     private int GetSpawnAmount(bool ally)
