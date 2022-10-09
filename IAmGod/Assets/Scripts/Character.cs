@@ -3,13 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Character : MonoBehaviour
-{
-    private LayerMask layerMask;
-    public int Health { get; private set; }
-    public bool Ally { private set { ally = value; } get { return ally; } }
-    [SerializeField] private bool ally;
-    [SerializeField] private int _health;
+public class Character : Targetable
+{    
     public int DamageAmount;
     private NavMeshAgent agent;
     private Transform target;
@@ -21,7 +16,8 @@ public class Character : MonoBehaviour
     private Vector3 _randomPoint;
     private Vector3 previous;
     private float velocity;
-    [SerializeField] private LayerMask foeMask;
+
+    private Vector3 _home;
     
     void Start()
     {
@@ -49,8 +45,11 @@ public class Character : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > maxtimer) {
             timer = 0f;
-            if (target == null) {
+            if (target == null && _home == null) {
                 _randomPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
+                agent.destination = _randomPoint;
+            } else if (_home != null) {
+                    _randomPoint = RandomNavSphere(_home, 1f, 3);
                 agent.destination = _randomPoint;
             }
         }
@@ -87,7 +86,7 @@ public class Character : MonoBehaviour
         agent.isStopped = true;
         anim.SetBool("Attacking", true);
     }
-    public void Damage(int dmg) {
+    public override void Damage(int dmg) { //take damage
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(this);
@@ -96,7 +95,7 @@ public class Character : MonoBehaviour
             Destroy(gameObject, 3f);
         }            
     }
-    public void DealDamage()
+    public void DealDamage() //deal damage
     {
         if(target != null) {
             Character toDealTo = target.gameObject.GetComponent<Character>();
@@ -104,6 +103,31 @@ public class Character : MonoBehaviour
                 toDealTo.Damage(DamageAmount);
         }
             
+    }
+    public bool InitHome(Transform t)
+    {
+        if (_home == null) {
+            _home = t.position;
+            //_home = RandomNavSphere(t.position, .7f, 3);
+            return true;
+        }
+        return false;
+    }
+    public void InitTarget()
+    {
+        if(target == null)
+        {
+            float minDist = Mathf.Infinity;
+            float dist;
+            foreach (Spawn s in GameManager.Instance.AllySpawns) {
+                dist = Vector3.Distance(s.gameObject.transform.position, transform.position);
+                if (dist < minDist) {
+                    minDist = dist;
+                    _home = s.gameObject.transform.position;
+                    //_home = RandomNavSphere(s.gameObject.transform.position, .7f, 3);
+                }
+            }
+        }
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)  //Beware, all code here and below be "borrowed"
@@ -129,15 +153,15 @@ public class Character : MonoBehaviour
         if (direction != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
-    Transform GetClosestEnemy(List<Character> enemies, float distance)
+    Transform GetClosestEnemy(List<Targetable> enemies, float distance)
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
         Vector3 currentPos = transform.position;
-        foreach (Character c in enemies) {
-            float dist = Vector3.Distance(c.gameObject.transform.position, currentPos);
+        foreach (Targetable t in enemies) {
+            float dist = Vector3.Distance(t.gameObject.transform.position, currentPos);
             if (dist < minDist) {
-                tMin = c.gameObject.transform;
+                tMin = t.gameObject.transform;
                 minDist = dist;
             }
         }

@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Character ALLY;
     [SerializeField] private string GAME_SCENE = "Game";
 
+    public List<Spawn> AllySpawns { get { return _allySpawns; } private set { _allySpawns = value; } }
     [SerializeField] private List<Spawn> _allySpawns; //Initialize these with starting ally and enemy spawns
     [SerializeField] private List<Spawn> _enemySpawns;
 
@@ -27,8 +28,8 @@ public class GameManager : MonoBehaviour
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
 
-    public List<Character> AllyList { private set; get; }
-    public List<Character> EnemyList { private set; get; }
+    public List<Targetable> AllyList { private set; get; }
+    public List<Targetable> EnemyList { private set; get; }
 
     #region Singleton
     public static GameManager Instance;
@@ -43,8 +44,11 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
-        AllyList = new List<Character>();
-        EnemyList = new List<Character>();
+        AllyList = new List<Targetable>();
+        foreach(Spawn s in AllySpawns) {
+            AllyList.Add(s.gameObject.GetComponent<Character>());
+        }
+        EnemyList = new List<Targetable>();
         _enemyChanceAccumulator = new List<int>();
         foreach (EnemyChance ec in ENEMIES) {
             _totalOdds += ec.odds;
@@ -90,16 +94,20 @@ public class GameManager : MonoBehaviour
             System.Random rand = new System.Random();
             if (ally) {
                 AllyList.Add(Instantiate(ALLY, s.SpawnPoint.transform));
+                if(AllyList[AllyList.Count-1] is Character c)
+                    c.InitHome(s.transform);
             } else {
                 int pull = rand.Next(_totalOdds) + 1; //Really dumb system for relative probability spawning, work though, I think
                 for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
                     if (pull <= _enemyChanceAccumulator[j]) {
                         EnemyList.Add(Instantiate(ENEMIES[j].enemy, s.SpawnPoint.transform));
+                        if (EnemyList[EnemyList.Count - 1] is Character c)
+                            c.InitTarget();
                         break;
                     }                      
                 }
             }
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(.3f);
         }
         if (ally)
             _spawningAllies = false;
@@ -107,12 +115,12 @@ public class GameManager : MonoBehaviour
             _spawningEnemies = false;
     }
 
-    public void Death(Character c)
+    public void Death(Targetable t)
     {
-        if (c.Ally)
-            AllyList.Remove(c);
+        if (t.Ally)
+            AllyList.Remove(t);
         else {
-            EnemyList.Remove(c);
+            EnemyList.Remove(t);
             KillCount++;
         }
         if (AllyList.Count <= 0)
