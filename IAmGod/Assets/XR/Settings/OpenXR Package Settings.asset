@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8309813825539282625
+--- !u!114 &-8830309639932437676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,88 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
-  m_Name: RuntimeDebuggerOpenXRFeature WSA
+  m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
+  m_Name: OculusQuestFeature Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Runtime Debugger
-  version: 1
-  featureIdInternal: com.unity.openxr.features.runtimedebugger
-  openxrExtensionStrings: 
+  nameUi: Oculus Quest Support
+  version: 1.0.0
+  featureIdInternal: com.unity.openxr.feature.oculusquest
+  openxrExtensionStrings: XR_OCULUS_android_initialize_loader
   company: Unity
   priority: 0
   required: 0
-  cacheSize: 1048576
-  perThreadCacheSize: 51200
---- !u!114 &-7915955556938730682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: WSA
-  m_EditorClassIdentifier: 
-  features:
-  - {fileID: -2524491848668112064}
-  - {fileID: 5454936790738519401}
-  - {fileID: 2124833887470233017}
-  - {fileID: 144902041957175914}
-  - {fileID: -5416532545130162862}
-  - {fileID: 7256146104229898490}
-  - {fileID: 385497433469420908}
-  - {fileID: -8309813825539282625}
-  - {fileID: -452538170573575838}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &-7402566245410052995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
-  m_Name: EyeGazeInteraction Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Eye Gaze Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.eyetracking
-  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &-6096455019146390753
-=======
---- !u!114 &-9111536917032298589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
-  m_Name: OculusTouchControllerProfile Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Oculus Touch Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.oculustouch
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-8903385799267469909
->>>>>>> Stashed changes
+--- !u!114 &-8621491911929530144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,305 +40,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &-5801437298055752123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
-  m_Name: ConformanceAutomationFeature Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Conformance Automation
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.conformance
-  openxrExtensionStrings: XR_EXT_conformance_automation
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &-5600006706367922641
-=======
---- !u!114 &-6795336247772047738
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
-  m_Name: MicrosoftHandInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Microsoft Hand Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.handtracking
-  openxrExtensionStrings: XR_MSFT_hand_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-6407722975810981574
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
-  m_Name: HTCViveControllerProfile Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: HTC Vive Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.htcvive
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &-5416532545130162862
-=======
---- !u!114 &-6979794163973172335
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
-  m_Name: OculusQuestFeature Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Oculus Quest Support
-  version: 1.0.0
-  featureIdInternal: com.unity.openxr.feature.oculusquest
-  openxrExtensionStrings: XR_OCULUS_android_initialize_loader
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-6868416083542163430
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
-  m_Name: EyeGazeInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Eye Gaze Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.eyetracking
-  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-6407722975810981574
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
-  m_Name: MicrosoftHandInteraction WSA
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Microsoft Hand Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.handtracking
-  openxrExtensionStrings: XR_MSFT_hand_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-5194870010658869243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
-  m_Name: OculusTouchControllerProfile Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Oculus Touch Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.oculustouch
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &-5134417779748661578
-=======
---- !u!114 &-2461972234435054966
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: iPhone
-  m_EditorClassIdentifier: 
-  features: []
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &-2652194950811259530
-=======
-  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
-  m_Name: ConformanceAutomationFeature Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Conformance Automation
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.conformance
-  openxrExtensionStrings: XR_EXT_conformance_automation
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-2308581832472852084
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
-  m_Name: KHRSimpleControllerProfile Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Khronos Simple Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-2524491848668112064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
-  m_Name: ConformanceAutomationFeature WSA
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  m_enabled: 0
-  nameUi: Conformance Automation
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.conformance
-  openxrExtensionStrings: XR_EXT_conformance_automation
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-2348371036145279443
-=======
-  features:
-  - {fileID: 5413783212857654646}
-  - {fileID: 6045959051568450617}
-  - {fileID: -8903385799267469909}
-  - {fileID: 6160215260552062669}
-  - {fileID: 2829025374874505044}
-  - {fileID: -768699442703399383}
-  - {fileID: 3961754822500946617}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &-889723416439404373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
-  m_Name: OculusQuestFeature Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Oculus Quest Support
-  version: 1.0.0
-  featureIdInternal: com.unity.openxr.feature.oculusquest
-  openxrExtensionStrings: XR_OCULUS_android_initialize_loader
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-827227439772305212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: Android
-  m_EditorClassIdentifier: 
-  features:
-  - {fileID: -2461972234435054966}
-  - {fileID: 3450106106557614310}
-  - {fileID: 7046640103923348944}
-  - {fileID: -6795336247772047738}
-  - {fileID: -889723416439404373}
-  - {fileID: -9111536917032298589}
-  - {fileID: 6774231765855113471}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &-768699442703399383
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
-  m_Name: MicrosoftHandInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Microsoft Hand Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.handtracking
-  openxrExtensionStrings: XR_MSFT_hand_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &-536081664958265589
+--- !u!114 &-7047671936490876635
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -418,7 +50,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
-  m_Name: RuntimeDebuggerOpenXRFeature Android
+  m_Name: RuntimeDebuggerOpenXRFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
   nameUi: Runtime Debugger
@@ -430,30 +62,7 @@ MonoBehaviour:
   required: 0
   cacheSize: 1048576
   perThreadCacheSize: 51200
---- !u!114 &-452538170573575838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
-  m_Name: ValveIndexControllerProfile WSA
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Valve Index Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.valveindex
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &-169392991636503249
-=======
---- !u!114 &-1367207691122025827
+--- !u!114 &-6955441506098954590
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -463,142 +72,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: Android
+  m_Name: Standalone
   m_EditorClassIdentifier: 
   features:
-  - {fileID: 837607287359919520}
-  - {fileID: -6868416083542163430}
-  - {fileID: 3028903291628573193}
-  - {fileID: 3889089324483033871}
-  - {fileID: -6979794163973172335}
-  - {fileID: 6744590617171973590}
-  - {fileID: 9001399388142983246}
+  - {fileID: 1618733477441694368}
+  - {fileID: 2014932749118127212}
+  - {fileID: 8443266062660680601}
+  - {fileID: 4844180820920379929}
+  - {fileID: 4719806668927158978}
+  - {fileID: -8621491911929530144}
+  - {fileID: 7421088051056263979}
+  - {fileID: -3988833680279249440}
+  - {fileID: -7047671936490876635}
+  - {fileID: -3417184563600872644}
   m_renderMode: 1
   m_depthSubmissionMode: 0
---- !u!114 &-1250919563322195652
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: Android
-  m_EditorClassIdentifier: 
-  features:
-  - {fileID: -5801437298055752123}
-  - {fileID: 2659884135673644295}
-  - {fileID: -2652194950811259530}
-  - {fileID: -2348371036145279443}
-  - {fileID: 7545306926101121924}
-  - {fileID: -5194870010658869243}
-  - {fileID: -536081664958265589}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f0ebc320a151d3408ea1e9fce54d40e, type: 3}
-  m_Name: OpenXR Package Settings
-  m_EditorClassIdentifier: 
-  Keys: 0100000004000000070000000d0000000e00000019000000
-  Values:
-  - {fileID: 9082315673251026289}
-  - {fileID: -5134417779748661578}
-  - {fileID: -169392991636503249}
-  - {fileID: 5593344333732165645}
-  - {fileID: -7915955556938730682}
-  - {fileID: 5906195771578721852}
---- !u!114 &13886048794827733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
-  m_Name: ConformanceAutomationFeature Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Conformance Automation
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.conformance
-  openxrExtensionStrings: XR_EXT_conformance_automation
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &144902041957175914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
-  m_Name: KHRSimpleControllerProfile WSA
-  m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  m_enabled: 0
-  nameUi: Khronos Simple Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &184421870045692621
-=======
-  Keys: 0100000007000000
-  Values:
-  - {fileID: 4823344787558203233}
-  - {fileID: -1367207691122025827}
-=======
-  Keys: 0100000007000000
-  Values:
-  - {fileID: 4823344787558203233}
-  - {fileID: -827227439772305212}
->>>>>>> Stashed changes
---- !u!114 &171978164591520839
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
-  m_Name: ValveIndexControllerProfile Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Valve Index Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.valveindex
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
---- !u!114 &250129654904363308
-=======
-  cacheSize: 1048576
-  perThreadCacheSize: 51200
---- !u!114 &837607287359919520
+--- !u!114 &-5916756954710463987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -618,8 +107,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &2354792657202576786
->>>>>>> Stashed changes
+--- !u!114 &-5847207519749500159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -628,201 +116,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
-  m_Name: KHRSimpleControllerProfile Standalone
+  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
+  m_Name: Android
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream
-  m_enabled: 0
-  nameUi: Khronos Simple Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &385497433469420908
-=======
   features:
-  - {fileID: -5119758218023717211}
-  - {fileID: -4398685459634601348}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: -5916756954710463987}
+  - {fileID: 1846308762162790725}
+  - {fileID: 7731215019047257649}
+  - {fileID: 4856328860963202251}
+  - {fileID: -8830309639932437676}
+  - {fileID: 6408183983764481575}
+  - {fileID: -1408702293083008100}
   m_renderMode: 1
   m_depthSubmissionMode: 0
---- !u!114 &2783063079060110594
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
-  m_Name: OculusTouchControllerProfile WSA
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Oculus Touch Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.oculustouch
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &1981898074864777794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7de993716e042c6499d0c18eed3a773c, type: 3}
-  m_Name: MockRuntime Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Mock Runtime
-  version: 0.0.2
-  featureIdInternal: com.unity.openxr.feature.mockruntime
-  openxrExtensionStrings: XR_UNITY_null_gfx
-  company: Unity
-  priority: 0
-  required: 0
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-  ignoreValidationErrors: 0
---- !u!114 &2124833887470233017
-=======
---- !u!114 &3028903291628573193
-=======
---- !u!114 &3450106106557614310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
-  m_Name: EyeGazeInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Eye Gaze Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.eyetracking
-  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &3961754822500946617
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
-  m_Name: KHRSimpleControllerProfile Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Khronos Simple Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &3889089324483033871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
-  m_Name: MicrosoftHandInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Microsoft Hand Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.handtracking
-  openxrExtensionStrings: XR_MSFT_hand_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &3961754822500946617
->>>>>>> Stashed changes
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
-  m_Name: HTCViveControllerProfile WSA
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: HTC Vive Controller Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.htcvive
-  openxrExtensionStrings: 
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &2337149209409930580
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
-  m_Name: MicrosoftHandInteraction Standalone
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Microsoft Hand Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.handtracking
-  openxrExtensionStrings: XR_MSFT_hand_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &2659884135673644295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
-  m_Name: EyeGazeInteraction Android
-  m_EditorClassIdentifier: 
-  m_enabled: 0
-  nameUi: Eye Gaze Interaction Profile
-  version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.eyetracking
-  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
-  company: Unity
-  priority: 0
-  required: 0
---- !u!114 &4610964464393925166
+--- !u!114 &-3988833680279249440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -842,7 +149,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &5454936790738519401
+--- !u!114 &-3417184563600872644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -851,52 +158,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
-  m_Name: EyeGazeInteraction WSA
+  m_Script: {fileID: 11500000, guid: 0d6ccd3d0ef0f1d458e69421dccbdae1, type: 3}
+  m_Name: ValveIndexControllerProfile Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Eye Gaze Interaction Profile
+  nameUi: Valve Index Controller Profile
   version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.eyetracking
-  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+  featureIdInternal: com.unity.openxr.feature.input.valveindex
+  openxrExtensionStrings: 
   company: Unity
   priority: 0
   required: 0
-<<<<<<< Updated upstream
---- !u!114 &5593344333732165645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: WebGL
-  m_EditorClassIdentifier: 
-  features: []
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &5906195771578721852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: tvOS
-  m_EditorClassIdentifier: 
-  features: []
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
---- !u!114 &6951751965307716151
-=======
---- !u!114 &6774231765855113471
->>>>>>> Stashed changes
+--- !u!114 &-1408702293083008100
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -906,11 +179,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
-<<<<<<< Updated upstream
-  m_Name: RuntimeDebuggerOpenXRFeature Standalone
-=======
   m_Name: RuntimeDebuggerOpenXRFeature Android
->>>>>>> Stashed changes
   m_EditorClassIdentifier: 
   m_enabled: 0
   nameUi: Runtime Debugger
@@ -922,11 +191,7 @@ MonoBehaviour:
   required: 0
   cacheSize: 1048576
   perThreadCacheSize: 51200
-<<<<<<< Updated upstream
---- !u!114 &7256146104229898490
-=======
---- !u!114 &7046640103923348944
->>>>>>> Stashed changes
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -935,33 +200,114 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: 761fdd4502cb7a84e9ec7a2b24f33f37, type: 3}
-  m_Name: MicrosoftMotionControllerProfile WSA
+  m_Script: {fileID: 11500000, guid: 9f0ebc320a151d3408ea1e9fce54d40e, type: 3}
+  m_Name: OpenXR Package Settings
+  m_EditorClassIdentifier: 
+  Keys: 0100000007000000
+  Values:
+  - {fileID: -6955441506098954590}
+  - {fileID: -5847207519749500159}
+--- !u!114 &1618733477441694368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 486b5e28864f9a94b979b9620ce5006d, type: 3}
+  m_Name: ConformanceAutomationFeature Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Microsoft Motion Controller Profile
+  nameUi: Conformance Automation
   version: 0.0.1
-  featureIdInternal: com.unity.openxr.feature.input.microsoftmotioncontroller
-=======
+  featureIdInternal: com.unity.openxr.feature.conformance
+  openxrExtensionStrings: XR_EXT_conformance_automation
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &1846308762162790725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
+  m_Name: EyeGazeInteraction Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Eye Gaze Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.eyetracking
+  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &2014932749118127212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3cf79659a011bd419c7a2a30eb74e9a, type: 3}
+  m_Name: EyeGazeInteraction Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Eye Gaze Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.eyetracking
+  openxrExtensionStrings: XR_EXT_eye_gaze_interaction
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &4719806668927158978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
+  m_Name: MicrosoftHandInteraction Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Microsoft Hand Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.handtracking
+  openxrExtensionStrings: XR_MSFT_hand_interaction
+  company: Unity
+  priority: 0
+  required: 0
+--- !u!114 &4844180820920379929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
-  m_Name: KHRSimpleControllerProfile Android
+  m_Name: KHRSimpleControllerProfile Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
   nameUi: Khronos Simple Controller Profile
   version: 0.0.1
   featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
->>>>>>> Stashed changes
   openxrExtensionStrings: 
   company: Unity
   priority: 0
   required: 0
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
---- !u!114 &7545306926101121924
-=======
---- !u!114 &6744590617171973590
->>>>>>> Stashed changes
+--- !u!114 &4856328860963202251
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -970,20 +316,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: 9ef793c31862a37448e907829482ef80, type: 3}
-  m_Name: OculusQuestFeature Android
+  m_Script: {fileID: 11500000, guid: f928d0d73a35f294fbe357ca17aa3547, type: 3}
+  m_Name: MicrosoftHandInteraction Android
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Oculus Quest Support
-  version: 1.0.0
-  featureIdInternal: com.unity.openxr.feature.oculusquest
-  openxrExtensionStrings: XR_OCULUS_android_initialize_loader
+  nameUi: Microsoft Hand Interaction Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.handtracking
+  openxrExtensionStrings: XR_MSFT_hand_interaction
   company: Unity
   priority: 0
   required: 0
---- !u!114 &9082315673251026289
-=======
+--- !u!114 &6408183983764481575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feeef8d85de8db242bdda70cc7ff5acd, type: 3}
   m_Name: OculusTouchControllerProfile Android
   m_EditorClassIdentifier: 
@@ -995,8 +347,7 @@ MonoBehaviour:
   company: Unity
   priority: 0
   required: 0
---- !u!114 &9001399388142983246
->>>>>>> Stashed changes
+--- !u!114 &7421088051056263979
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1005,37 +356,55 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-<<<<<<< Updated upstream
-  m_Script: {fileID: 11500000, guid: b5a1f07dc5afe854f9f12a4194aca3fb, type: 3}
-  m_Name: Standalone
-  m_EditorClassIdentifier: 
-  features:
-  - {fileID: 13886048794827733}
-  - {fileID: -7402566245410052995}
-  - {fileID: -5600006706367922641}
-  - {fileID: 250129654904363308}
-  - {fileID: 2337149209409930580}
-  - {fileID: -6096455019146390753}
-  - {fileID: 1981898074864777794}
-  - {fileID: 4610964464393925166}
-  - {fileID: 6951751965307716151}
-  - {fileID: 184421870045692621}
-  m_renderMode: 1
-  m_depthSubmissionMode: 0
-=======
-  m_Script: {fileID: 11500000, guid: 056125dd64c0ed540b40a4af74f7b495, type: 3}
-  m_Name: RuntimeDebuggerOpenXRFeature Android
+  m_Script: {fileID: 11500000, guid: 7de993716e042c6499d0c18eed3a773c, type: 3}
+  m_Name: MockRuntime Standalone
   m_EditorClassIdentifier: 
   m_enabled: 0
-  nameUi: Runtime Debugger
-  version: 1
-  featureIdInternal: com.unity.openxr.features.runtimedebugger
+  nameUi: Mock Runtime
+  version: 0.0.2
+  featureIdInternal: com.unity.openxr.feature.mockruntime
+  openxrExtensionStrings: XR_UNITY_null_gfx
+  company: Unity
+  priority: 0
+  required: 0
+  ignoreValidationErrors: 0
+--- !u!114 &7731215019047257649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f6bfdbcb316ed242b30a8798c9eb853, type: 3}
+  m_Name: KHRSimpleControllerProfile Android
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: Khronos Simple Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.khrsimpleprofile
   openxrExtensionStrings: 
   company: Unity
   priority: 0
   required: 0
-  cacheSize: 1048576
-  perThreadCacheSize: 51200
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+--- !u!114 &8443266062660680601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274c02963f889a64e90bc2e596e21d13, type: 3}
+  m_Name: HTCViveControllerProfile Standalone
+  m_EditorClassIdentifier: 
+  m_enabled: 0
+  nameUi: HTC Vive Controller Profile
+  version: 0.0.1
+  featureIdInternal: com.unity.openxr.feature.input.htcvive
+  openxrExtensionStrings: 
+  company: Unity
+  priority: 0
+  required: 0

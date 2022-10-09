@@ -3,8 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Target
+  tags: []
   layers:
   - Default
   - TransparentFX
@@ -12,20 +11,6 @@ TagManager:
   - 
   - Water
   - UI
-<<<<<<< Updated upstream
-  - 
-=======
-  - Meteor
-  - Enemy
-  - Ally
-<<<<<<< Updated upstream
-  - 
-  - 
->>>>>>> Stashed changes
-=======
-  - EnemyWeapon
-  - AllyWeapon
->>>>>>> Stashed changes
   - 
   - 
   - 
@@ -48,9 +33,10 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - HandPlayer
+  - Hand
+  - Grabbable
+  - Grabbing
   m_SortingLayers:
   - name: Default
     uniqueID: 0

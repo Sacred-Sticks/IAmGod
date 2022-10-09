@@ -55,7 +55,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > .375f)) {            
+        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > .5f)) {            
             target = null;
             anim.SetBool("Attacking", false);
             agent.isStopped = false;
@@ -96,12 +96,14 @@ public class Character : MonoBehaviour
             Destroy(gameObject, 3f);
         }            
     }
-    private void OnTriggerEnter(Collider other)
+    public void DealDamage()
     {
-        if((foeMask.value & (1 << other.transform.gameObject.layer)) > 0) {
-            Character otherChar = other.gameObject.GetComponentInParent(typeof(Character)) as Character;
-            Damage(otherChar.DamageAmount);
+        if(target != null) {
+            Character toDealTo = target.gameObject.GetComponent<Character>();
+            if (toDealTo != null)
+                toDealTo.Damage(DamageAmount);
         }
+            
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)  //Beware, all code here and below be "borrowed"

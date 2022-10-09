@@ -655,6 +655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner
       objectReference: {fileID: 0}
+    - target: {fileID: 31267125307187829, guid: 374a9063287fbcb4d9eb905b02f14313, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 374a9063287fbcb4d9eb905b02f14313, type: 3}
 --- !u!1001 &856223491200859181
@@ -777,6 +781,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4534712068041263176, guid: 9b08f80b0137a4844bf90bcf6ff592b2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 4534712069583030284, guid: 9b08f80b0137a4844bf90bcf6ff592b2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

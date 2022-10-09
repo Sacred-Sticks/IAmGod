@@ -3916,7 +3916,6 @@ GameObject:
   - component: {fileID: 6116455761096391860}
   - component: {fileID: 6116455761089176570}
   - component: {fileID: 6116455761600567733}
-  - component: {fileID: 3255374488273174932}
   - component: {fileID: 8300356091267458569}
   m_Layer: 8
   m_Name: AllyTest
@@ -3993,19 +3992,6 @@ MonoBehaviour:
   foeMask:
     serializedVersion: 2
     m_Bits: 512
---- !u!65 &3255374488273174932
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6116455761096733262}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 2, z: 0.5}
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!195 &8300356091267458569
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4015,7 +4001,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 6116455761096733262}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Speed: 0.5
   m_Acceleration: 2
   avoidancePriority: 50
