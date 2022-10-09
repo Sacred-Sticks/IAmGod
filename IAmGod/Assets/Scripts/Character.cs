@@ -50,10 +50,10 @@ public class Character : Targetable
             timer = 0f;
             if (target == null && _home == null) {
                 _randomPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
-                agent.destination = _randomPoint;
+                if (agent.enabled)
+                    agent.destination = _randomPoint;
             } else if (_home != null) {
                 if (!ally)
-<<<<<<< Updated upstream
                 {
                     target = _home;
                     _home = null;                    
@@ -62,24 +62,25 @@ public class Character : Targetable
                     agent.destination = _randomPoint;
                 }
                 
-=======
-                    //Debug.Log("!ally");
-                _randomPoint = RandomNavSphere(_home, 1f, 3);
-                agent.destination = _randomPoint;
->>>>>>> Stashed changes
             }
         }
 
-        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > .5f)) {            
-            target = null;
-            anim.SetBool("Attacking", false);
-            agent.isStopped = false;
+        if (agent.enabled)
+        {
+            if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > .5f)) {            
+                target = null;
+                anim.SetBool("Attacking", false);
+                agent.isStopped = false;
+            }
         }
         
         Vector3 targetpos = (target == null) ? _randomPoint : target.transform.position;
         if (targetpos != null) {
+            if (agent.enabled)
+            {
             MoveTowards(targetpos);
             RotateTowards(targetpos);
+            }
         }
         
 
@@ -115,7 +116,7 @@ public class Character : Targetable
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(this);
-            agent.isStopped = true;
+            agent.enabled = false;
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
