@@ -94,8 +94,12 @@ public class GameManager : MonoBehaviour
             System.Random rand = new System.Random();
             if (ally) {
                 AllyList.Add(Instantiate(ALLY, s.SpawnPoint.transform));
-                if(AllyList[AllyList.Count-1] is Character c)
+                if(AllyList[AllyList.Count-1] is Character c) {
                     c.InitHome(s.transform);
+                    c.gameObject.transform.SetParent(null);
+                }
+                    
+
             } else {
                 int pull = rand.Next(_totalOdds) + 1; //Really dumb system for relative probability spawning, work though, I think
                 for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
@@ -107,7 +111,7 @@ public class GameManager : MonoBehaviour
                     }                      
                 }
             }
-            yield return new WaitForSeconds(.3f);
+            yield return new WaitForSeconds(ally ? .3f : .6f);
         }
         if (ally)
             _spawningAllies = false;
@@ -118,12 +122,17 @@ public class GameManager : MonoBehaviour
     public void Death(Targetable t)
     {
         if (t.Ally)
+        {
+            Spawn s = t.gameObject.GetComponent<Spawn>();
+            if (s != null)
+                AllySpawns.Remove(s);
             AllyList.Remove(t);
+        }            
         else {
             EnemyList.Remove(t);
             KillCount++;
         }
-        if (AllyList.Count <= 0)
+        if (AllyList.Count <= 0 || AllySpawns.Count <= 0)
             EndGame();
         if (EnemyList.Count <= 5 && (!_spawningEnemies && !_spawningAllies))
             EndRound();

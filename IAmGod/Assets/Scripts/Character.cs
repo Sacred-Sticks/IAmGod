@@ -17,7 +17,7 @@ public class Character : Targetable
     private Vector3 previous;
     private float velocity;
 
-    private Vector3 _home;
+    private Transform _home = null;
     
     void Start()
     {
@@ -30,15 +30,16 @@ public class Character : Targetable
     {
         if (target == null) {
             Transform potentialTarget = null;
-            if (Ally)
+            if (Ally) {
                 potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, .5f);
-            else
+            } else {
                 potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, .5f);
+            }                
             if (potentialTarget != null)
                 target = potentialTarget;
         } else {
             float dist = Vector3.Distance(target.transform.position, transform.position);
-            if (dist < .07f)
+            if (dist < .1f)
                 Attack(target);
         }
         
@@ -50,9 +51,14 @@ public class Character : Targetable
                 agent.destination = _randomPoint;
             } else if (_home != null) {
                 if (!ally)
-                    Debug.Log("!ally");
-                _randomPoint = RandomNavSphere(_home, 1f, 3);
-                agent.destination = _randomPoint;
+                {
+                    target = _home;
+                    _home = null;                    
+                } else {
+                    _randomPoint = RandomNavSphere(_home.position, 1f, 3);
+                    agent.destination = _randomPoint;
+                }
+                
             }
         }
 
@@ -92,6 +98,8 @@ public class Character : Targetable
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(this);
+            agent.isStopped = true;
+            agent.enabled = false;
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
@@ -100,7 +108,7 @@ public class Character : Targetable
     public void DealDamage() //deal damage
     {
         if(target != null) {
-            Character toDealTo = target.gameObject.GetComponent<Character>();
+            Targetable toDealTo = target.gameObject.GetComponent<Targetable>();
             if (toDealTo != null)
                 toDealTo.Damage(DamageAmount);
         }
@@ -109,7 +117,7 @@ public class Character : Targetable
     public bool InitHome(Transform t)
     {
         if (_home == null) {
-            _home = t.position;
+            _home = t;
             //_home = RandomNavSphere(t.position, .7f, 3);
             return true;
         }
@@ -117,19 +125,7 @@ public class Character : Targetable
     }
     public void InitTarget()
     {
-        if(target == null)
-        {
-            float minDist = Mathf.Infinity;
-            float dist;
-            foreach (Spawn s in GameManager.Instance.AllySpawns) {
-                dist = Vector3.Distance(s.gameObject.transform.position, transform.position);
-                if (dist < minDist) {
-                    minDist = dist;
-                    _home = s.gameObject.transform.position;
-                    //_home = RandomNavSphere(s.gameObject.transform.position, .7f, 3);
-                }
-            }
-        }
+        target = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)  //Beware, all code here and below be "borrowed"
@@ -161,15 +157,14 @@ public class Character : Targetable
         float minDist = Mathf.Infinity;
         Vector3 currentPos = transform.position;
         foreach (Targetable t in enemies) {
+            if (t == null)
+                break;
             float dist = Vector3.Distance(t.gameObject.transform.position, currentPos);
             if (dist < minDist) {
                 tMin = t.gameObject.transform;
                 minDist = dist;
             }
         }
-        if (minDist > distance)
-            return null;
-        else
             return tMin;
     }
 

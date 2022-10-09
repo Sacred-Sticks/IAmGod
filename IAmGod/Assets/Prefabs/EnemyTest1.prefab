@@ -3949,7 +3949,8 @@ GameObject:
   - component: {fileID: 6116455761089176570}
   - component: {fileID: 6116455761600567733}
   - component: {fileID: 8300356091267458569}
-  - component: {fileID: 1490002055794806390}
+  - component: {fileID: 8363757104062175644}
+  - component: {fileID: 6034476976274987843}
   m_Layer: 6
   m_Name: EnemyTest1
   m_TagString: Untagged
@@ -4044,7 +4045,7 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &1490002055794806390
+--- !u!114 &8363757104062175644
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4053,12 +4054,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 6116455761096733262}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97c2b4697b490064e80d0f2f4881c824, type: 3}
+  m_Script: {fileID: 11500000, guid: ead8a4a6b57fa1d4ba52ff98d5f62025, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagableDealers:
+  damagingLayers:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 1792
+--- !u!136 &6034476976274987843
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116455761096733262}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6116455761096733802
 GameObject:
   m_ObjectHideFlags: 0
@@ -4420,3 +4435,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
   m_PrefabInstance: {fileID: 1866453084713897660}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1866453084713797660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
+  m_PrefabInstance: {fileID: 1866453084713897660}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7825018137731452960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866453084713797660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ead8a4a6b57fa1d4ba52ff98d5f62025, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damagingLayers:
+    serializedVersion: 2
+    m_Bits: 0
