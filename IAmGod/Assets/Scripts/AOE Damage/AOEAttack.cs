@@ -13,6 +13,7 @@ public class AOEAttack : MonoBehaviour
         foreach (Character enemy in enemies)
         {
             enemy.Damage(damage);
+            Debug.Log("Damaged " + enemy);
         }
     }
 

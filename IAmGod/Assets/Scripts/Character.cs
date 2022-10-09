@@ -53,6 +53,7 @@ public class Character : Targetable
                 agent.destination = _randomPoint;
             } else if (_home != null) {
                 if (!ally)
+<<<<<<< Updated upstream
                 {
                     target = _home;
                     _home = null;                    
@@ -61,6 +62,11 @@ public class Character : Targetable
                     agent.destination = _randomPoint;
                 }
                 
+=======
+                    //Debug.Log("!ally");
+                _randomPoint = RandomNavSphere(_home, 1f, 3);
+                agent.destination = _randomPoint;
+>>>>>>> Stashed changes
             }
         }
 
