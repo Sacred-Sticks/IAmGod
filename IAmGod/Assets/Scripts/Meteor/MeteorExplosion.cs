@@ -18,17 +18,13 @@ public class MeteorExplosion : MonoBehaviour
     [System.Serializable] private struct AttackData
     {
         public LayerMask attackLayers;
-        public int damage;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (attackData.attackLayers == (attackData.attackLayers | (1 << collision.gameObject.layer)))
         {
-            foreach(Character enemy in enemies)
-            {
-                enemy.Damage(attackData.damage);
-            }
+            GetComponent<AOEAttack>().DealDamage();
 
             Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, explosionData.groundLayers);
 
