@@ -201,7 +201,7 @@ MonoBehaviour:
   attackData:
     attackLayers:
       serializedVersion: 2
-      m_Bits: 392
+      m_Bits: 200
 --- !u!114 &6880339569639666339
 MonoBehaviour:
   m_ObjectHideFlags: 0

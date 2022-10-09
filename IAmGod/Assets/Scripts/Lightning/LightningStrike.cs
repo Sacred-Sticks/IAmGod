@@ -9,21 +9,26 @@ public class LightningStrike : MonoBehaviour
     [SerializeField] private LayerMask cloudLayers;
 
     private Vector3 initialHandPos;
+    private bool canStrike = true;
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Particle Collision");
         if (!(cloudLayers == (cloudLayers | 1 << other.gameObject.layer))) return;
+        //Debug.Log("Trigger entered");
 
         initialHandPos = transform.position;
 
-        Instantiate(lightning, initialHandPos, Quaternion.Euler(0, 0, 0));
-        StartCoroutine(Strike());
+        if (canStrike)
+        {
+            StartCoroutine(Strike());
+        }
     }
 
     private IEnumerator Strike()
     {
+        Instantiate(lightning, initialHandPos, Quaternion.Euler(0, 0, 0));
+        canStrike = false;
         yield return new WaitForSeconds(strikeWaitTime);
-        lightning.GetComponentInChildren<AOEAttack>().DealDamage();
+        canStrike = true;
     }
 }
