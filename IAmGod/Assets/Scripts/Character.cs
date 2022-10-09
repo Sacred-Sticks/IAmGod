@@ -33,7 +33,7 @@ public class Character : Targetable
             if (Ally) {
                 potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, .5f);
             } else {
-                potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, .5f);
+                potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
             }                
             if (potentialTarget != null)
                 target = potentialTarget;
@@ -69,8 +69,11 @@ public class Character : Targetable
         }
         
         Vector3 targetpos = (target == null) ? _randomPoint : target.transform.position;
-        MoveTowards(targetpos);
-        RotateTowards(targetpos);
+        if (targetpos != null) {
+            MoveTowards(targetpos);
+            RotateTowards(targetpos);
+        }
+        
 
         UpdateAnim();
     }
@@ -99,7 +102,6 @@ public class Character : Targetable
         if (Health <= 0) {
             GameManager.Instance.Death(this);
             agent.isStopped = true;
-            agent.enabled = false;
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
@@ -165,7 +167,10 @@ public class Character : Targetable
                 minDist = dist;
             }
         }
+        if (minDist < distance)
             return tMin;
+        else
+            return null;
     }
 
 }
