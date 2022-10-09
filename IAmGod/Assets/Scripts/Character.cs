@@ -8,7 +8,7 @@ public class Character : MonoBehaviour
     public int Health { get; private set; }
     [SerializeField] private bool Ally;
     [SerializeField] private int _health;
-    [SerializeField] private int _damage;
+    public int DamageAmount;
     private NavMeshAgent agent;
     private Transform target;
     [SerializeField] private Animator anim;
@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
     private Vector3 _randomPoint;
     private Vector3 previous;
     private float velocity;
+    [SerializeField] private LayerMask foeMask;
 
     void Start()
     {
@@ -78,6 +79,13 @@ public class Character : MonoBehaviour
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
         }            
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if((foeMask.value & (1 << other.transform.gameObject.layer)) > 0) {
+            Character otherChar = other.gameObject.GetComponentInParent(typeof(Character)) as Character;
+            Damage(otherChar.DamageAmount);
+        }
     }
 
     public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)  //Beware, all code here and below be "borrowed"
