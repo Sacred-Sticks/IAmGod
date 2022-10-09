@@ -684,7 +684,7 @@ MonoBehaviour:
   spawningData:
     averageTime: 2
     timeVariance: 0.5
-    positionY: -0.25
+    positionY: 1
     distance: 10
   meteorData:
     meteorGameObject: {fileID: 4946125229161205004, guid: 7c0b4ee80e2085d47804cf13ed2b592c, type: 3}

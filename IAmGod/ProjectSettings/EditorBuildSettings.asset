@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Lucas Tests.unity
-    guid: d33790a5b3c07174ab4cd7c3233b673e
-  - enabled: 0
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5d1c03845b6567d44b8a8975741fd44f
+  - enabled: 1
     path: Assets/Scenes/Final.unity
     guid: 4b32a47c443f3d34bacaa5b52999697d
   m_configObjects:

@@ -57,7 +57,7 @@ public class MeteorSpawner : MonoBehaviour
 
     private void SetHeight()
     {
-        spawnPosition = new(0, playerCollider.height + spawningData.positionY, 0);
+        spawnPosition = new(0, spawningData.positionY, 0);
     }
 
     private void SetPosition()
