@@ -18,8 +18,13 @@ TagManager:
   - Meteor
   - Enemy
   - Ally
+<<<<<<< Updated upstream
   - 
   - 
+>>>>>>> Stashed changes
+=======
+  - EnemyWeapon
+  - AllyWeapon
 >>>>>>> Stashed changes
   - 
   - 

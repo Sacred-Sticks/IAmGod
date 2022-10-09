@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {    
-    private int _enemyCount;
-    private int _allyCount;
     public int KillCount { get; private set; }
 
     [SerializeField] private List<EnemyChance> ENEMIES;
@@ -29,6 +27,9 @@ public class GameManager : MonoBehaviour
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
 
+    public List<Character> AllyList { private set; get; }
+    public List<Character> EnemyList { private set; get; }
+
     #region Singleton
     public static GameManager Instance;
     private void Awake()
@@ -42,6 +43,8 @@ public class GameManager : MonoBehaviour
 
     public void Start()
     {
+        AllyList = new List<Character>();
+        EnemyList = new List<Character>();
         _enemyChanceAccumulator = new List<int>();
         foreach (EnemyChance ec in ENEMIES) {
             _totalOdds += ec.odds;
@@ -85,21 +88,17 @@ public class GameManager : MonoBehaviour
     {
         for(int i = 0; i < amount; i++) {
             System.Random rand = new System.Random();
-            Character toBeSpawned;
             if (ally) {
-                toBeSpawned = ALLY;
-                _allyCount++;
+                AllyList.Add(Instantiate(ALLY, s.SpawnPoint.transform));
             } else {
-                _enemyCount++;
                 int pull = rand.Next(_totalOdds) + 1; //Really dumb system for relative probability spawning, work though, I think
                 for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
                     if (pull <= _enemyChanceAccumulator[j]) {
-                        toBeSpawned = ENEMIES[j].enemy;
+                        EnemyList.Add(Instantiate(ENEMIES[j].enemy, s.SpawnPoint.transform));
                         break;
                     }                      
                 }
             }
-            Instantiate(ally ? ALLY : ENEMIES[rand.Next(ENEMIES.Count)].enemy, s.SpawnPoint.transform);
             yield return new WaitForSeconds(.2f);
         }
         if (ally)
@@ -108,17 +107,17 @@ public class GameManager : MonoBehaviour
             _spawningEnemies = false;
     }
 
-    public void Death(bool ally)
+    public void Death(Character c)
     {
-        if (ally)
-            _allyCount -= 1;
+        if (c.Ally)
+            AllyList.Remove(c);
         else {
-            _enemyCount -= 1;
+            EnemyList.Remove(c);
             KillCount++;
-        }            
-        if (_allyCount <= 0)
+        }
+        if (AllyList.Count <= 0)
             EndGame();
-        if (_enemyCount <= 5 && (!_spawningEnemies && !_spawningAllies))
+        if (EnemyList.Count <= 5 && (!_spawningEnemies && !_spawningAllies))
             EndRound();
     }
     private void EndRound()
