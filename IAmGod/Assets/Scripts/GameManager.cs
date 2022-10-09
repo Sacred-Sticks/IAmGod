@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     {
         AllyList = new List<Targetable>();
         foreach(Spawn s in AllySpawns) {
-            AllyList.Add(s.gameObject.GetComponent<Character>());
+            AllyList.Add(s.gameObject.GetComponent<Targetable>());
         }
         EnemyList = new List<Targetable>();
         _enemyChanceAccumulator = new List<int>();

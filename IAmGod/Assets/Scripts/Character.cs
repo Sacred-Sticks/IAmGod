@@ -49,7 +49,9 @@ public class Character : Targetable
                 _randomPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
                 agent.destination = _randomPoint;
             } else if (_home != null) {
-                    _randomPoint = RandomNavSphere(_home, 1f, 3);
+                if (!ally)
+                    Debug.Log("!ally");
+                _randomPoint = RandomNavSphere(_home, 1f, 3);
                 agent.destination = _randomPoint;
             }
         }
