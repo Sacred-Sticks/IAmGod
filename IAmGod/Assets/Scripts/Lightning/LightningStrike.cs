@@ -2,48 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ParticleSystem))]
 public class LightningStrike : MonoBehaviour
 {
-    [SerializeField] private HandsData handsData;
-    [SerializeField] private SphereCastData sphereCastData;
-    [System.Serializable] private struct HandsData
-    {
-        public GameObject leftHand;
-        public GameObject rightHand;
-    }
-    [System.Serializable] private struct SphereCastData
-    {
-        public float radius;
-        public Vector3 direction;
-        public float maxDistance;
-        public LayerMask layers;
-    }
+    [SerializeField] private GameObject lightning;
+    [SerializeField] private float strikeWaitTime;
+    [SerializeField] private LayerMask cloudLayers;
 
-    private ParticleSystem particles;
-    private Transform handTransform;
-    private Vector3 initialHandPos, finalPos;
+    private Vector3 initialHandPos;
 
-    private void Awake()
+    private void OnTriggerEnter(Collider other)
     {
-        particles = GetComponent<ParticleSystem>();
+        Debug.Log("Particle Collision");
+        if (!(cloudLayers == (cloudLayers | 1 << other.gameObject.layer))) return;
+
+        initialHandPos = transform.position;
+
+        Instantiate(lightning, initialHandPos, Quaternion.Euler(0, 0, 0));
+        StartCoroutine(Strike());
     }
 
-    private void OnParticleCollision(GameObject other)
+    private IEnumerator Strike()
     {
-        if (other != handsData.leftHand && other != handsData.rightHand) return;
-
-        handTransform = other.transform;
-        initialHandPos = handTransform.position;
-
-        RaycastHit hit = GetSpherecast();
-        Physics.Raycast(hit.collider.transform.position, Vector3.down, out hit);
-        finalPos = hit.point;
-    }
-
-    private RaycastHit GetSpherecast()
-    {
-        Physics.SphereCast(initialHandPos, sphereCastData.radius, sphereCastData.direction, out RaycastHit hit);
-        return hit;
+        yield return new WaitForSeconds(strikeWaitTime);
+        lightning.GetComponentInChildren<AOEAttack>().DealDamage();
     }
 }

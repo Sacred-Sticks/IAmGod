@@ -98,6 +98,8 @@ public class Character : Targetable
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(this);
+            agent.isStopped = true;
+            agent.enabled = false;
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
