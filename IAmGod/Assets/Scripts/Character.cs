@@ -30,18 +30,15 @@ public class Character : MonoBehaviour
     {
         velocity = ((transform.position - previous).magnitude) / Time.deltaTime;    
         previous = transform.position;
-        Debug.Log(velocity);
         anim.SetFloat("Velocity", velocity);
 
         timer += Time.deltaTime;
-        if (agent.isStopped)
-        {
-            if (target == null || Vector3.Distance(gameObject.transform.position, target.position) > 1.6f) {
-                target = null;
-                anim.SetBool("Attacking", false);
-                agent.isStopped = false;
-            }
-                    
+        if(target != null)
+            Debug.Log(Vector3.Distance(transform.position, target.position));
+        if (velocity <= .01f && (target == null || Vector3.Distance(transform.position, target.position) > .375f)) {            
+            target = null;
+            anim.SetBool("Attacking", false);
+            agent.isStopped = false;
         }
         if (timer > maxtimer) {
             timer = 0f;
