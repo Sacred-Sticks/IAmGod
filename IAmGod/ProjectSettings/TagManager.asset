@@ -14,8 +14,13 @@ TagManager:
   - Meteor
   - Enemy
   - Ally
+<<<<<<< Updated upstream
+  - Water
   - 
-  - 
+=======
+  - EnemyHurtbox
+  - AllyHurtbox
+>>>>>>> Stashed changes
   - 
   - 
   - 

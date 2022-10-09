@@ -4051,9 +4051,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Ally: 0
   _health: 10
-  _damage: 10
+  DamageAmount: 0
   anim: {fileID: 6116455761089176570}
   rotationSpeed: 10
+  foeMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!65 &3255374488273174932
 BoxCollider:
   m_ObjectHideFlags: 0

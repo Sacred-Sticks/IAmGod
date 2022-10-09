@@ -7798,6 +7798,10 @@ PrefabInstance:
       propertyPath: teleportObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5405401283067383870, guid: 550b13c7ab5987948bb95292d813fbde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     - target: {fileID: 7828819849286420516, guid: 550b13c7ab5987948bb95292d813fbde, type: 3}
       propertyPath: m_Name
       value: TeleporterPointer
@@ -9976,6 +9980,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 5405401283067383870, guid: 550b13c7ab5987948bb95292d813fbde, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 550b13c7ab5987948bb95292d813fbde, type: 3}
 --- !u!1 &185253151234259928 stripped
