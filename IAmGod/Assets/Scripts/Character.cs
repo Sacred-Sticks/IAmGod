@@ -41,6 +41,8 @@ public class Character : Targetable
             float dist = Vector3.Distance(target.transform.position, transform.position);
             if (dist < .1f)
                 Attack(target);
+            else
+                StopAttack(target);
         }
         
         timer += Time.deltaTime;
@@ -96,6 +98,12 @@ public class Character : Targetable
         target = tgt;
         agent.isStopped = true;
         anim.SetBool("Attacking", true);
+    }
+    public void StopAttack(Transform tgt)
+    {
+        target = tgt;
+        agent.isStopped = false;
+        anim.SetBool("Attacking", false);
     }
     public override void Damage(int dmg) { //take damage
         Health -= dmg;
