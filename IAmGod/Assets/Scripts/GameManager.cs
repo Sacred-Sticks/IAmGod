@@ -140,6 +140,7 @@ public class GameManager : MonoBehaviour
     private void EndRound()
     {
         Round += 1;
+        _spawnRate = (int)(_spawnRate * 1.1f);
         if (Round > MaxRounds)
             EndGame();
         Spawn();
