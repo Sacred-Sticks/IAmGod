@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class SpawnTsunami : MonoBehaviour
 {
-    [SerializeField] private LayerMask waterLayers;
+    [SerializeField] private LayerMask meteorLayers;
     [SerializeField] private GameObject tsunamiGameObject;
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (waterLayers == (waterLayers | 1 << other.gameObject.layer))
+        Debug.Log("Entered " + other.gameObject.name + "'s trigger");
+        if (meteorLayers == (meteorLayers | 1 << other.gameObject.layer))
         {
-            Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, Mathf.Infinity, waterLayers);
-            Instantiate(tsunamiGameObject, hit.point, transform.rotation);
+            Debug.Log("Entered Water Trigger");
+            Debug.Log(other.gameObject.name);
+            Physics.Raycast(other.transform.position, Vector3.down, out RaycastHit hit);
+            Instantiate(tsunamiGameObject, hit.point, Quaternion.Euler(0, 0, 0));
+            Destroy(other.gameObject);
         }
     }
 }

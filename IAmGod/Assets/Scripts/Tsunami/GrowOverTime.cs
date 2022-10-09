@@ -33,6 +33,6 @@ public class GrowOverTime : MonoBehaviour
             return;
         }
 
-        body.velocity = -transform.up * fallingMultiplier;
+        body.velocity = -Vector3.up * fallingMultiplier;
     }
 }
