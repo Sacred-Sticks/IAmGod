@@ -1,25 +1,28 @@
+using Autohand;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticleSystem))]
 [RequireComponent(typeof(TrailRenderer))]
-public class DisableIfLowVelocity : MonoBehaviour
+public class DisableIfHeld : MonoBehaviour
 {
-    [SerializeField] private Rigidbody body;
     [SerializeField] private float threshold;
+
     private ParticleSystem particles;
     private TrailRenderer trail;
+    private Grabbable grabbable;
 
     private void Awake()
     {
         particles = GetComponent<ParticleSystem>();
         trail = GetComponent<TrailRenderer>();
+        grabbable = transform.parent.GetComponent<Grabbable>();
     }
 
     private void Update()
     {
-        if (body.velocity.magnitude < threshold)
+        if (grabbable.IsHeld())
         {
             particles.Clear();
             particles.Stop();

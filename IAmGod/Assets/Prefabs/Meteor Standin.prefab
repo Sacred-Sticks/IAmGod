@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5392235028380786527}
   - component: {fileID: 6880339569639666339}
   - component: {fileID: 3013315073955751025}
+  - component: {fileID: 1298552744641230402}
   m_Layer: 6
   m_Name: Meteor Standin
   m_TagString: Untagged
@@ -228,6 +229,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1298552744641230402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500288455055443547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1e1099fcba76941bf5de35b7d8650a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterLayers:
+    serializedVersion: 2
+    m_Bits: 16
+  tsunamiGameObject: {fileID: 4540639250231977278, guid: 49d31e80e7af2a148b170d92d2dcd9f1, type: 3}
 --- !u!1001 &5243409695474628810
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -331,7 +348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aea92de8d62ed342907eeafb25bdd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  body: {fileID: 5500288455055443545}
   threshold: 0.5
 --- !u!114 &9089857892734942184
 MonoBehaviour:
@@ -346,8 +362,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 5500288455055443545}
-  particleMultiplier: 2
+  particleMultiplier: 3
   trailMultiplier: 0.1
+  lifetimeMultiplier: 0.3
 --- !u!4 &2177980792892851389 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6268422080570211447, guid: 09df29397edaf484e8ed5d82ae5acf57, type: 3}
