@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,12 +37,17 @@ public class Character : Targetable
     }
     private void Update()
     {
+        HandleTargeting();
+        UpdateAnim();
+    }
+
+    private void HandleTargeting() {
         if (target == null) { //if char has no target TODO: JITTERING ANIMATION, NOT ATTACKING
             timer += Time.deltaTime;
             if (timer > _roamTime) { //every <_roamTime> seconds there is no target
                 timer = 0f;
                 if (ally)
-                    _nextPoint = RandomNavSphere(_home.position, 1f, 3);                    
+                    _nextPoint = RandomNavSphere(_home.position, 1f, 3);
                 else
                     _nextPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
                 Transform potentialTarget = null;
@@ -51,26 +57,25 @@ public class Character : Targetable
                     potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
                 if (potentialTarget != null)
                     _nextPoint = potentialTarget.position;
-            }            
+            }
         } else { //if char has target
             float dist = Vector3.Distance(target.transform.position, transform.position);
             if (dist > _disengageRange)
                 StopAttack();
             else
-                Attack(target);                
-        } 
+                Attack(target);
+        }
         if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > _attackRange)) { //if player is too far or target is null, start looking again          
             target = null;
             anim.SetBool("Attacking", false);
             agent.isStopped = false;
         }
-        
+
         Vector3 targetpos = (target == null) ? _nextPoint : target.transform.position; //get target pos, move + rotate
         MoveTowards(targetpos);
-        RotateTowards(targetpos);        
-
-        UpdateAnim();
+        RotateTowards(targetpos);
     }
+
     private void UpdateAnim()
     {
         velocity = (transform.position - previous).magnitude / Time.deltaTime;
