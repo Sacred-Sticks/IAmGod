@@ -23,6 +23,9 @@ public class Character : Targetable
 
     private Transform _home = null;
     
+    
+
+
     void Start()
     {
         layerMask = Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally");
@@ -30,19 +33,18 @@ public class Character : Targetable
         agent = GetComponent<NavMeshAgent>();
         agent.destination = RandomNavSphere(gameObject.transform.position, 2f, 3);
 
-        _disengageRange = _attackRange + (_attackRange * 1.2f);
+        _disengageRange = _attackRange + (_attackRange * 1.2f); //adjust scale
         _attackRange *= transform.localScale.x;
         _detectionRange *= transform.localScale.x;
         _disengageRange *= transform.localScale.x;
     }
-    private void Update()
-    {
+    private void Update() {
         HandleTargeting();
         UpdateAnim();
     }
 
     private void HandleTargeting() {
-        if (target == null) { //if char has no target TODO: JITTERING ANIMATION, NOT ATTACKING
+        if (target == null) { //if char has no target
             timer += Time.deltaTime;
             if (timer > _roamTime) { //every <_roamTime> seconds there is no target
                 timer = 0f;
@@ -55,11 +57,13 @@ public class Character : Targetable
                     potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, _detectionRange);
                 else
                     potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
-                if (potentialTarget != null)
+                if (potentialTarget != null) {
                     _nextPoint = potentialTarget.position;
+                    target = potentialTarget;
+                }                    
             }
         } else { //if char has target
-            float dist = Vector3.Distance(target.transform.position, transform.position);
+            float dist = Vector3.Distance(target.transform.position, transform.position); //TODO check attack distance based on raycast to work for veritable sized enemies
             if (dist > _disengageRange)
                 StopAttack();
             else
