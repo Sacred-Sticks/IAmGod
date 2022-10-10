@@ -6,14 +6,17 @@ using UnityEngine.AI;
 public class Character : Targetable
 {    
     public int DamageAmount;
+    [SerializeField] private float _attackRange = .5f;
+    [SerializeField] private float _detectionRange = .5f;
+    private float _disengageRange;
     private NavMeshAgent agent;
     private Transform target;
     [SerializeField] private Animator anim;
 
     [SerializeField] private float rotationSpeed = 5f;
     private float timer = 0f;
-    private float maxtimer = 1f;
-    private Vector3 _randomPoint;
+    [SerializeField] private float _roamTime = 1.5f;
+    private Vector3 _nextPoint;
     private Vector3 previous;
     private float velocity;
 
@@ -21,102 +24,75 @@ public class Character : Targetable
     
     void Start()
     {
-        layerMask = (Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally"));
+        layerMask = Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally");
         target = null;
         agent = GetComponent<NavMeshAgent>();
         agent.destination = RandomNavSphere(gameObject.transform.position, 2f, 3);
+
+        _disengageRange = _attackRange + (_attackRange * 1.2f);
+        _attackRange *= transform.localScale.x;
+        _detectionRange *= transform.localScale.x;
+        _disengageRange *= transform.localScale.x;
     }
     private void Update()
     {
-        if (target == null) {
-            Transform potentialTarget = null;
-            if (Ally) {
-                potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, .5f);
-            } else {
-                potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
-            }                
-            if (potentialTarget != null)
-                target = potentialTarget;
-        } else {
+        if (target == null) { //if char has no target TODO: JITTERING ANIMATION, NOT ATTACKING
+            timer += Time.deltaTime;
+            if (timer > _roamTime) { //every <_roamTime> seconds there is no target
+                timer = 0f;
+                if (ally)
+                    _nextPoint = RandomNavSphere(_home.position, 1f, 3);                    
+                else
+                    _nextPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
+                Transform potentialTarget = null;
+                if (Ally)
+                    potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, _detectionRange);
+                else
+                    potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
+                if (potentialTarget != null)
+                    _nextPoint = potentialTarget.position;
+            }            
+        } else { //if char has target
             float dist = Vector3.Distance(target.transform.position, transform.position);
-            if (dist < .1f)
-                Attack(target);
+            if (dist > _disengageRange)
+                StopAttack();
             else
-                StopAttack(target);
+                Attack(target);                
+        } 
+        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > _attackRange)) { //if player is too far or target is null, start looking again          
+            target = null;
+            anim.SetBool("Attacking", false);
+            agent.isStopped = false;
         }
         
-        timer += Time.deltaTime;
-        if (timer > maxtimer) {
-            timer = 0f;
-            if (target == null && _home == null) {
-                _randomPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
-                if (agent.enabled)
-                    agent.destination = _randomPoint;
-            } else if (_home != null) {
-                if (!ally)
-                {
-                    target = _home;
-                    _home = null;                    
-                } else {
-                    _randomPoint = RandomNavSphere(_home.position, 1f, 3);
-                    agent.destination = _randomPoint;
-                }
-                
-            }
-        }
-
-        if (agent.enabled)
-        {
-            if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > .5f)) {            
-                target = null;
-                anim.SetBool("Attacking", false);
-                agent.isStopped = false;
-            }
-        }
-        
-        Vector3 targetpos = (target == null) ? _randomPoint : target.transform.position;
-        if (targetpos != null) {
-            if (agent.enabled)
-            {
-            MoveTowards(targetpos);
-            RotateTowards(targetpos);
-            }
-        }
-        
+        Vector3 targetpos = (target == null) ? _nextPoint : target.transform.position; //get target pos, move + rotate
+        MoveTowards(targetpos);
+        RotateTowards(targetpos);        
 
         UpdateAnim();
     }
     private void UpdateAnim()
     {
-        velocity = ((transform.position - previous).magnitude) / Time.deltaTime;
+        velocity = (transform.position - previous).magnitude / Time.deltaTime;
         previous = transform.position;
         anim.SetFloat("Velocity", velocity);
     }
-    public void UpdateTarget(Transform tgt)
-    {
-        if(target == null)
-        {
-            target = tgt;
-            agent.destination = target.transform.position;
-        }
-    }
     public void Attack(Transform tgt)
     {
-        target = tgt;
         agent.isStopped = true;
         anim.SetBool("Attacking", true);
     }
-    public void StopAttack(Transform tgt)
+    public void StopAttack()
     {
-        target = tgt;
         agent.isStopped = false;
         anim.SetBool("Attacking", false);
     }
-    public override void Damage(int dmg) { //take damage
+    public override void Damage(int dmg) //take damage
+    {
         Health -= dmg;
         if (Health <= 0) {
             GameManager.Instance.Death(this);
-            agent.enabled = false;
+            agent.isStopped = true;
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
@@ -124,28 +100,22 @@ public class Character : Targetable
     }
     public void DealDamage() //deal damage
     {
-        if(target != null) {
+        if (target != null) {
             Targetable toDealTo = target.gameObject.GetComponent<Targetable>();
             if (toDealTo != null)
                 toDealTo.Damage(DamageAmount);
         }
-            
+
     }
-    public bool InitHome(Transform t)
+    public void InitHome(Transform t)
     {
-        if (_home == null) {
-            _home = t;
-            //_home = RandomNavSphere(t.position, .7f, 3);
-            return true;
-        }
-        return false;
+        _home = t;
     }
     public void InitTarget()
     {
         target = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
     }
-
-    public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask)  //Beware, all code here and below be "borrowed"
+    public static Vector3 RandomNavSphere(Vector3 origin, float distance, int layermask) //get random point on layer mask within sphere in radius
     {
         Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
 
@@ -161,14 +131,13 @@ public class Character : Targetable
     {
         agent.SetDestination(target);
     }
-
-    private void RotateTowards(Vector3 target)
+    private void RotateTowards(Vector3 target) //Rotate towards target with slerp
     {
         Vector3 direction = (target - transform.position).normalized;
         if (direction != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
-    Transform GetClosestEnemy(List<Targetable> enemies, float distance)
+    Transform GetClosestEnemy(List<Targetable> enemies, float distance) //Retrieves closest enemy, returns null if father than max distance input
     {
         Transform tMin = null;
         float minDist = Mathf.Infinity;
@@ -187,5 +156,10 @@ public class Character : Targetable
         else
             return null;
     }
-
+    void OnDrawGizmosSelected() {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, _detectionRange  * transform.localScale.x);
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, _attackRange * transform.localScale.x);
+    }
 }

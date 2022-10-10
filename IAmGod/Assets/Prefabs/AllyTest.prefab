@@ -3933,7 +3933,7 @@ Transform:
   m_GameObject: {fileID: 6116455761096733262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.125, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6116455761096435918}
@@ -3987,8 +3987,11 @@ MonoBehaviour:
   ally: 1
   _health: 20
   DamageAmount: 5
+  _attackRange: 2
+  _detectionRange: 10
   anim: {fileID: 6116455761089176570}
   rotationSpeed: 10
+  _roamTime: 1.5
 --- !u!195 &8300356091267458569
 NavMeshAgent:
   m_ObjectHideFlags: 0

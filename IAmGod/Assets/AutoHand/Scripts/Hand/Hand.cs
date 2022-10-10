@@ -1218,6 +1218,7 @@ namespace Autohand {
                 }
                 catch(MissingReferenceException e)
                 {
+                    Debug.LogError(e.ToString());
                     handPoseArea = null;
                     SetHandPose(preHandPoseAreaPose);
                 }

@@ -9,7 +9,6 @@ public class Targetable : MonoBehaviour
     [SerializeField] protected bool ally;
     public int Health { get { return _health; } protected set { _health = value; } }
     [SerializeField] protected int _health;
-
     private void Start()
     {
         layerMask = (Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally"));
@@ -23,5 +22,5 @@ public class Targetable : MonoBehaviour
             GameManager.Instance.Death(this);
             Destroy(gameObject);
         }
-    }
+    }    
 }

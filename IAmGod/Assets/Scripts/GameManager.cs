@@ -45,12 +45,12 @@ public class GameManager : MonoBehaviour
     public void Start()
     {
         AllyList = new List<Targetable>();
-        foreach(Spawn s in AllySpawns) {
-            AllyList.Add(s.gameObject.GetComponent<Targetable>());
-        }
         EnemyList = new List<Targetable>();
+        foreach (Spawn s in AllySpawns) //Add spawns to ally targets
+            AllyList.Add(s.gameObject.GetComponent<Targetable>());
+        
         _enemyChanceAccumulator = new List<int>();
-        foreach (EnemyChance ec in ENEMIES) {
+        foreach (EnemyChance ec in ENEMIES) { //count up odds and add to array for inital enemy array
             _totalOdds += ec.odds;
             _enemyChanceAccumulator.Add(_totalOdds);
         }           
@@ -83,58 +83,57 @@ public class GameManager : MonoBehaviour
         _spawningAllies = true;
         _spawningEnemies = true;
         foreach (Spawn s in _allySpawns)
-            StartCoroutine(HandleSpawn(GetSpawnAmount(true) / _allySpawns.Count, s, true));
-
+            StartCoroutine(HandleAllySpawn(GetSpawnAmount(true) / _allySpawns.Count, s));
         foreach (Spawn s in _enemySpawns)
-            StartCoroutine(HandleSpawn(GetSpawnAmount(false) / _enemySpawns.Count, s, false));
+            StartCoroutine(HandleEnemySpawn(GetSpawnAmount(false) / _enemySpawns.Count, s));
     }
-    private IEnumerator HandleSpawn(int amount, Spawn s, bool ally)
+    private IEnumerator HandleAllySpawn(int amount, Spawn s)
     {
-        for(int i = 0; i < amount; i++) {
-            System.Random rand = new System.Random();
-            if (ally) {
-                AllyList.Add(Instantiate(ALLY, s.SpawnPoint.transform));
-                if(AllyList[AllyList.Count-1] is Character c) {
-                    c.InitHome(s.transform);
-                    c.gameObject.transform.SetParent(null);
-                }
-                    
-
-            } else {
-                int pull = rand.Next(_totalOdds) + 1; //Really dumb system for relative probability spawning, work though, I think
-                for(int j = 0; j < _enemyChanceAccumulator.Count; j++) {
-                    if (pull <= _enemyChanceAccumulator[j]) {
-                        EnemyList.Add(Instantiate(ENEMIES[j].enemy, s.SpawnPoint.transform));
-                        if (EnemyList[EnemyList.Count - 1] is Character c)
-                            c.InitTarget();
-                        break;
-                    }                      
+        Character spawned = null;
+        for (int i = 0; i < amount; i++) {
+            spawned = Instantiate(ALLY, s.SpawnPoint.transform);
+            AllyList.Add(spawned);
+            spawned.InitHome(s.transform);
+            spawned.gameObject.transform.SetParent(null);
+            yield return new WaitForSeconds(.3f);
+        }
+        _spawningAllies = false;
+    }
+    private IEnumerator HandleEnemySpawn(int amount, Spawn s) {
+        Character spawned = null;
+        int pull = 0;
+        System.Random rand = new System.Random();
+        for (int i = 0; i < amount; i++) {            
+            pull = rand.Next(_totalOdds) + 1;
+            for (int j = 0; j < _enemyChanceAccumulator.Count; j++) {
+                if (pull <= _enemyChanceAccumulator[j]) {
+                    spawned = Instantiate(ENEMIES[j].enemy, s.SpawnPoint.transform);
+                    EnemyList.Add(spawned);
+                    spawned.InitTarget();
+                    break;
                 }
             }
-            yield return new WaitForSeconds(ally ? .3f : .6f);
+            yield return new WaitForSeconds(.6f);
         }
-        if (ally)
-            _spawningAllies = false;
-        else
-            _spawningEnemies = false;
+        _spawningEnemies = false;
     }
-
     public void Death(Targetable t)
     {
-        if (t.Ally)
-        {
+        if (!t.Ally) {
+            EnemyList.Remove(t);
+            KillCount++;            
+        } else {
             Spawn s = t.gameObject.GetComponent<Spawn>();
             if (s != null)
                 AllySpawns.Remove(s);
             AllyList.Remove(t);
-        }            
-        else {
-            EnemyList.Remove(t);
-            KillCount++;
         }
+        CheckWinLoseConditions();
+    }
+    private void CheckWinLoseConditions() {
         if (AllyList.Count <= 0 || AllySpawns.Count <= 0)
             EndGame();
-        if (EnemyList.Count <= 5 && (!_spawningEnemies && !_spawningAllies))
+        if (EnemyList.Count <= 0 && !_spawningEnemies && !_spawningAllies)
             EndRound();
     }
     private void EndRound()
