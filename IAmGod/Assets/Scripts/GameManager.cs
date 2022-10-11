@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public int KillCount { get; private set; }
 
     [SerializeField] private List<EnemyChance> ENEMIES;
+    [SerializeField] private List<EnemyLookup> _enemyLookup;
     private int _totalOdds = 0;
     private List<int> _enemyChanceAccumulator;
     [SerializeField] private Character ALLY;
@@ -156,8 +157,9 @@ public class GameManager : MonoBehaviour
         if (Round > MaxRounds)
             EndGame();
         _spawnRate = (int)(_spawnRate * 1.1f);
-        SceneManager.LoadScene(GAME_SCENE);
-        //Augment enemy list here, maybe with table TODO
+        if (_enemyLookup[Round] != null)
+            ENEMIES = _enemyLookup[Round].enemyChance;
+        SceneManager.LoadScene(GAME_SCENE);        
     }
     private void EndGame()
     {
@@ -169,5 +171,9 @@ public class GameManager : MonoBehaviour
     {
         public Character enemy;
         public int odds;
+    }
+    [System.Serializable]
+    private class EnemyLookup {
+        public List<EnemyChance> enemyChance;
     }
 }

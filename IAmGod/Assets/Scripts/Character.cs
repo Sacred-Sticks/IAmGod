@@ -40,7 +40,7 @@ public class Character : Targetable
         UpdateAnim();
     }
 
-    private void HandleTargeting() {
+    private void HandleTargeting() { //TODO Ideally differentiate castles and chars, target the collider nearest for castle, the unit for chars
         if (target == null) { //if char has no target
             timer += Time.deltaTime;
             if (timer > _roamTime) { //every <_roamTime> seconds there is no target
