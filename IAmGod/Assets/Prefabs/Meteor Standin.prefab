@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5500288455055443549}
   - component: {fileID: 5500288455055443551}
+  - component: {fileID: 5188145519337294260}
   - component: {fileID: 5500288455055443544}
   - component: {fileID: 5500288455055443545}
   - component: {fileID: 5500288455055443546}
@@ -17,7 +18,6 @@ GameObject:
   - component: {fileID: 6880339569639666339}
   - component: {fileID: 3013315073955751025}
   - component: {fileID: 3223237087755718731}
-  - component: {fileID: 5188145519337294260}
   m_Layer: 8
   m_Name: Meteor Standin
   m_TagString: Untagged
@@ -33,8 +33,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5500288455055443547}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.299, z: -0.81}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2177980792892851389}
@@ -83,6 +83,14 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &5188145519337294260
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500288455055443547}
+  m_Mesh: {fileID: 289301614986012343, guid: d6faf916d4552344cae45088f0bea317, type: 3}
 --- !u!135 &5500288455055443544
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -233,14 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
---- !u!33 &5188145519337294260
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5500288455055443547}
-  m_Mesh: {fileID: 4711208715938537054, guid: ce4ee5ad8d0414948927c67349bafdd4, type: 3}
 --- !u!1001 &5243409695474628810
 PrefabInstance:
   m_ObjectHideFlags: 0

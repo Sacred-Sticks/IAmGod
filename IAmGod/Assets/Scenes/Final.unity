@@ -687,7 +687,7 @@ MonoBehaviour:
     positionY: 1
     distance: 10
   meteorData:
-    meteorGameObject: {fileID: 4946125229161205004, guid: 7c0b4ee80e2085d47804cf13ed2b592c, type: 3}
+    meteorGameObject: {fileID: 5500288455055443547, guid: 86287ff9bd0bf0341a2559a7a4f20425, type: 3}
     speed: 5
 --- !u!4 &813671378
 Transform:
