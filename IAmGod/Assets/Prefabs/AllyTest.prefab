@@ -3987,6 +3987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ally: 1
   _health: 20
+  type: 1
   DamageAmount: 5
   _attackRange: 2
   _detectionRange: 10

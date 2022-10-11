@@ -9,6 +9,9 @@ public class Targetable : MonoBehaviour
     [SerializeField] protected bool ally;
     public int Health { get { return _health; } protected set { _health = value; } }
     [SerializeField] protected int _health;
+    
+    public TargetType Type { protected set { type = value; } get { return type; } }
+    [SerializeField] TargetType type;
     private void Start()
     {
         layerMask = (Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally"));
@@ -23,4 +26,8 @@ public class Targetable : MonoBehaviour
             Destroy(gameObject);
         }
     }    
+}
+public enum TargetType {
+    Building,
+    Character
 }

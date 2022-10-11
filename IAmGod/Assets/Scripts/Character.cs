@@ -11,18 +11,17 @@ public class Character : Targetable
     [SerializeField] private float _detectionRange = .5f;
     private float _disengageRange;
     private NavMeshAgent agent;
-    private Transform target;
+    private Targetable target;
     [SerializeField] private Animator anim;
 
     [SerializeField] private float rotationSpeed = 5f;
     private float timer = 0f;
     [SerializeField] private float _roamTime = 1.5f;
-    private Vector3 _nextPoint;
     private Vector3 previous;
     private float velocity;
 
     private Transform _home = null;
-
+    private Vector3 _nextPoint = Vector3.zero;
     void Start()
     {
         layerMask = Ally ? LayerMask.GetMask("Enemy") : LayerMask.GetMask("Ally");
@@ -40,7 +39,7 @@ public class Character : Targetable
         UpdateAnim();
     }
 
-    private void HandleTargeting() { //TODO Ideally differentiate castles and chars, target the collider nearest for castle, the unit for chars
+    private void HandleTargeting() {
         if (target == null) { //if char has no target
             timer += Time.deltaTime;
             if (timer > _roamTime) { //every <_roamTime> seconds there is no target
@@ -49,23 +48,22 @@ public class Character : Targetable
                     _nextPoint = RandomNavSphere(_home.position, 1f, 3);
                 else
                     _nextPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
-                Transform potentialTarget = null;
+                Targetable potentialTarget = null;
                 if (Ally)
                     potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, _detectionRange);
                 else
                     potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
                 if (potentialTarget != null) {
-                    _nextPoint = potentialTarget.position;
                     target = potentialTarget;
                 }                    
             }
         } else { //if char has target
-            if (Vector3.Distance(transform.position, target.GetComponent<Collider>().ClosestPoint(transform.position)) > _disengageRange)
+            if (Vector3.Distance(transform.position, target.Type == TargetType.Building ? target.GetComponent<Collider>().ClosestPoint(transform.position) : target.gameObject.transform.position) > _disengageRange)
                 StopAttack();
             else
                 Attack(target);
         }
-        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.GetComponent<Collider>().ClosestPoint(transform.position)) > _attackRange)) { //if player is too far or target is null, start looking again          
+        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.Type == TargetType.Building ? target.GetComponent<Collider>().ClosestPoint(transform.position) : target.gameObject.transform.position) > _attackRange)) { //if player is too far or target is null, start looking again          
             target = null;
             anim.SetBool("Attacking", false);
             agent.isStopped = false;
@@ -82,7 +80,7 @@ public class Character : Targetable
         previous = transform.position;
         anim.SetFloat("Velocity", velocity);
     }
-    public void Attack(Transform tgt)
+    public void Attack(Targetable tgt)
     {
         agent.isStopped = true;
         anim.SetBool("Attacking", true);
@@ -142,9 +140,9 @@ public class Character : Targetable
         if (direction != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
-    Transform GetClosestEnemy(List<Targetable> enemies, float distance) //Retrieves closest enemy, returns null if father than max distance input
+    Targetable GetClosestEnemy(List<Targetable> enemies, float distance) //Retrieves closest enemy, returns null if father than max distance input
     {
-        Transform tMin = null;
+        Targetable tMin = null;
         float minDist = Mathf.Infinity;
         Vector3 currentPos = transform.position;
         foreach (Targetable t in enemies) {
@@ -152,7 +150,7 @@ public class Character : Targetable
                 break;
             float dist = Vector3.Distance(t.gameObject.transform.position, currentPos);
             if (dist < minDist) {
-                tMin = t.gameObject.transform;
+                tMin = t;
                 minDist = dist;
             }
         }

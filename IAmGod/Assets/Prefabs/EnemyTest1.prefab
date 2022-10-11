@@ -4020,6 +4020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ally: 0
   _health: 10
+  type: 1
   DamageAmount: 8
   _attackRange: 2
   _detectionRange: 10
