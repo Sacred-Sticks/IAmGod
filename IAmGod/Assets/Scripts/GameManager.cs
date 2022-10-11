@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviour
         if (Round > MaxRounds)
             EndGame();
         _spawnRate = (int)(_spawnRate * 1.1f);
-        //if (_enemyLookup[Round] != null)
+        //if (_enemyLookup[Round] != null) //TODO Add enemy classes, uncomment to enable
         //    UpdateOdds(_enemyLookup[Round].Enemies);
         SceneManager.LoadScene(GAME_SCENE);        
     }
