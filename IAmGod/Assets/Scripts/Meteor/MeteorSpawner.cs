@@ -51,7 +51,7 @@ public class MeteorSpawner : MonoBehaviour
 
     private void SetRotation()
     {
-        spawnRotationY = Random.Range(-180, 180);
+        spawnRotationY = Random.Range(-180, 0);
         spawnRotation = Quaternion.Euler(0, spawnRotationY, 0);
     }
 
