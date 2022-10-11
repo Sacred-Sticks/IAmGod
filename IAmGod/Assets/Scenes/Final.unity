@@ -253,18 +253,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 44077049}
-  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.47840223, y: 0.39647007, z: 0.59493214, w: 0.50990057}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0825}
   m_LocalScale: {x: 0.001, y: 0.001, z: 0.001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 309929964}
   m_Father: {fileID: 1232323303}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 90}
+  m_LocalEulerAnglesHint: {x: 0.924, y: 76.826, z: 99.535}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -0.0562, y: 0.0014}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &44077051
@@ -586,9 +586,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Round:
+  m_text: 'Round: 1
 
-    Kills:'
+    Kills: 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -622,8 +622,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -1034,11 +1034,11 @@ MonoBehaviour:
   spawningData:
     averageTime: 7
     timeVariance: 0.5
-    positionY: 1.5
-    distance: 10
+    positionY: 1.1
+    distance: 7
   meteorData:
     meteorGameObject: {fileID: 4946125229161205004, guid: 7c0b4ee80e2085d47804cf13ed2b592c, type: 3}
-    speed: 2
+    speed: 1.8
 --- !u!4 &813671378
 Transform:
   m_ObjectHideFlags: 0
@@ -1519,6 +1519,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1296716594021707366, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: ignoreHandCollider.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296716594021707366, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: ignoreHandCollider.Array.data[0]
+      value: 
+      objectReference: {fileID: 9025975985584970491, guid: 7c0b4ee80e2085d47804cf13ed2b592c, type: 3}
+    - target: {fileID: 1296716594636148808, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: ignoreHandCollider.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1296716594636148808, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: ignoreHandCollider.Array.data[0]
+      value: 
+      objectReference: {fileID: 9025975985584970491, guid: 7c0b4ee80e2085d47804cf13ed2b592c, type: 3}
+    - target: {fileID: 1575735658702523898, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: grabType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1575735659161826260, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
+      propertyPath: grabType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7668830299185360540, guid: f13bbbc9578242a44953eec81cfb27d4, type: 3}
       propertyPath: m_RootOrder
       value: 1

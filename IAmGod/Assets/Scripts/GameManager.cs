@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
 
     public List<Targetable> AllyList { private set; get; }
     public List<Targetable> EnemyList { private set; get; }
+    private bool lossFlag = false;
 
     #region Singleton
     public static GameManager Instance;
@@ -132,6 +133,7 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(.6f);
         }
         _spawningEnemies = false;
+        lossFlag = false;
     }
     public void Death(Targetable t)
     {
@@ -148,24 +150,27 @@ public class GameManager : MonoBehaviour
         CheckWinLoseConditions();
     }
     private void CheckWinLoseConditions() {
-        if (AllyList.Count <= 0 || AllySpawns.Count <= 0)
-            EndGame();
-        if (EnemyList.Count <= 0 && !_spawningEnemies && !_spawningAllies)
-            EndRound();
+        if(!lossFlag) {
+            if (AllyList.Count <= 0 || AllySpawns.Count <= 0)
+                EndGame();
+            if (EnemyList.Count <= 0 && !_spawningEnemies && !_spawningAllies)
+                EndRound();
+        }        
     }
     private void EndRound()
     {
+        lossFlag = true;
         Round += 1;
         UpdateHand();
         if (Round > MaxRounds)
             EndGame();
         _spawnRate = (int)(_spawnRate * 1.1f);
-        if (_enemyLookup[Round] != null)
-            UpdateOdds(_enemyLookup[Round].Enemies);
+        //if (_enemyLookup[Round] != null)
+        //    UpdateOdds(_enemyLookup[Round].Enemies);
         SceneManager.LoadScene(GAME_SCENE);        
     }
     private void UpdateHand() {
-        _handDisplay.text = "Round: " + Round + "\nKills: " + KillCount;
+        _handDisplay.text = "Round: " + (Round+1) + "\nKills: " + KillCount;
     }
     private void EndGame()
     {

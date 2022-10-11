@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 6144439854719044994}
   - component: {fileID: 362724819779889309}
   - component: {fileID: 5469599157552523822}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,11 +133,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ignoreMe: 0
-  body: {fileID: 5500288455055443545, guid: 86287ff9bd0bf0341a2559a7a4f20425, type: 3}
+  body: {fileID: 324224814886539661}
   hightlightMaterial: {fileID: 0}
   isGrabbable: 1
   CopySettings: {fileID: 0}
-  grabType: 0
+  grabType: 2
   handType: 0
   singleHandOnly: 0
   allowHeldSwapping: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   ignoreWeight: 0
   parentOnGrab: 1
   throwPower: 1
-  jointBreakForce: 3500
+  jointBreakForce: Infinity
   showAdvancedSettings: 1
   makeChildrenGrabbable: 1
   grabPriorityWeight: 1
