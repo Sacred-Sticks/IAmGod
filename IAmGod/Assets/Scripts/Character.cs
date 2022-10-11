@@ -140,7 +140,7 @@ public class Character : Targetable
         if (direction != Vector3.zero)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * rotationSpeed);
     }
-    Targetable GetClosestEnemy(List<Targetable> enemies, float distance) //Retrieves closest enemy, returns null if father than max distance input
+    private Targetable GetClosestEnemy(List<Targetable> enemies, float distance) //Retrieves closest enemy, returns null if father than max distance input
     {
         Targetable tMin = null;
         float minDist = Mathf.Infinity;
