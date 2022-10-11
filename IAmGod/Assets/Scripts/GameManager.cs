@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour
 {    
@@ -23,7 +24,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int maxRounds;
 
     public int Round { get { return round; } private set { round = value; } }
-    [SerializeField] private int round;
+    [SerializeField] private int round = 0;
 
     private bool _spawningAllies = false;
     private bool _spawningEnemies = false;
@@ -42,21 +43,34 @@ public class GameManager : MonoBehaviour
     }
     #endregion
 
-    public void Start()
-    {
+    public void OnEnable() {
+        DontDestroyOnLoad(this);
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    public void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode) {
         AllyList = new List<Targetable>();
         EnemyList = new List<Targetable>();
+        _allySpawns = new List<Spawn>();
+        _enemySpawns = new List<Spawn>();
+        List<Spawn> findSpawns = new List<Spawn>();
+        findSpawns.AddRange(FindObjectsOfType<Spawn>());
+        foreach (Spawn s in findSpawns) {
+            Targetable t = s.gameObject.GetComponent<Targetable>();
+            if(t != null)
+                _allySpawns.Add(s);
+            else
+                _enemySpawns.Add(s);
+            
+        }
         foreach (Spawn s in AllySpawns) //Add spawns to ally targets
             AllyList.Add(s.gameObject.GetComponent<Targetable>());
-        
+
         _enemyChanceAccumulator = new List<int>();
         foreach (EnemyChance ec in ENEMIES) { //count up odds and add to array for inital enemy array
             _totalOdds += ec.odds;
             _enemyChanceAccumulator.Add(_totalOdds);
-        }           
-
-        Round = 0;
-        EndRound();
+        }
+        Spawn();
     }
 
     private int GetSpawnAmount(bool ally)
@@ -139,14 +153,16 @@ public class GameManager : MonoBehaviour
     private void EndRound()
     {
         Round += 1;
-        _spawnRate = (int)(_spawnRate * 1.1f);
         if (Round > MaxRounds)
             EndGame();
-        Spawn();
+        _spawnRate = (int)(_spawnRate * 1.1f);
+        SceneManager.LoadScene(GAME_SCENE);
+        //Augment enemy list here, maybe with table TODO
     }
     private void EndGame()
     {
-        SceneManager.LoadScene(GAME_SCENE);        
+        SceneManager.MoveGameObjectToScene(this.gameObject, SceneManager.GetActiveScene());
+        SceneManager.LoadScene("MainMenu");        
     }
     [System.Serializable]
     private class EnemyChance

@@ -4025,7 +4025,7 @@ MonoBehaviour:
   _detectionRange: 10
   anim: {fileID: 6116455761089176570}
   rotationSpeed: 10
-  _roamTime: 1.5
+  _roamTime: 0.2
 --- !u!195 &8300356091267458569
 NavMeshAgent:
   m_ObjectHideFlags: 0

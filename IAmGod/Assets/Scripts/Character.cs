@@ -22,9 +22,6 @@ public class Character : Targetable
     private float velocity;
 
     private Transform _home = null;
-    
-    
-
 
     void Start()
     {

@@ -539,11 +539,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _allySpawns.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _enemySpawns.Array.size
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _allySpawns.Array.data[0]
