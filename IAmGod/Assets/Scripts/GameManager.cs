@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
-
+using TMPro;
 public class GameManager : MonoBehaviour
 {    
     public int KillCount { get; private set; }
+    [SerializeField] private TextMeshProUGUI _handDisplay;
 
     [SerializeField] private List<EnemyChance> ENEMIES;
     [SerializeField] private List<EnemyLookup> _enemyLookup;
@@ -136,7 +137,8 @@ public class GameManager : MonoBehaviour
     {
         if (!t.Ally) {
             EnemyList.Remove(t);
-            KillCount++;            
+            KillCount++;       
+            UpdateHand();
         } else {
             Spawn s = t.gameObject.GetComponent<Spawn>();
             if (s != null)
@@ -154,12 +156,16 @@ public class GameManager : MonoBehaviour
     private void EndRound()
     {
         Round += 1;
+        UpdateHand();
         if (Round > MaxRounds)
             EndGame();
         _spawnRate = (int)(_spawnRate * 1.1f);
         if (_enemyLookup[Round] != null)
             UpdateOdds(_enemyLookup[Round].Enemies);
         SceneManager.LoadScene(GAME_SCENE);        
+    }
+    private void UpdateHand() {
+        _handDisplay.text = "Round: " + Round + "\nKills: " + KillCount;
     }
     private void EndGame()
     {
