@@ -63,13 +63,12 @@ public class Character : Targetable
                 }                    
             }
         } else { //if char has target
-            float dist = Vector3.Distance(target.transform.position, transform.position); //TODO check attack distance based on raycast to work for veritable sized enemies
-            if (dist > _disengageRange)
+            if (Vector3.Distance(transform.position, target.GetComponent<Collider>().ClosestPoint(transform.position)) > _disengageRange)
                 StopAttack();
             else
                 Attack(target);
         }
-        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.position) > _attackRange)) { //if player is too far or target is null, start looking again          
+        if (agent.isStopped && (target == null || Vector3.Distance(transform.position, target.GetComponent<Collider>().ClosestPoint(transform.position)) > _attackRange)) { //if player is too far or target is null, start looking again          
             target = null;
             anim.SetBool("Attacking", false);
             agent.isStopped = false;
