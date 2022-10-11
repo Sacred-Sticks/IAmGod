@@ -3989,7 +3989,7 @@ MonoBehaviour:
   _health: 20
   type: 1
   DamageAmount: 5
-  _attackRange: 2
+  _attackRange: 2.5
   _detectionRange: 10
   anim: {fileID: 6116455761089176570}
   rotationSpeed: 10
@@ -4333,7 +4333,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7562259943209414843}
   m_LocalRotation: {x: -0.5, y: 0.49999967, z: -0.50000054, w: 0.4999998}
-  m_LocalPosition: {x: 38.006416, y: 22.335722, z: 23.03607}
+  m_LocalPosition: {x: 39.5, y: 2.6, z: 1.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4374,15 +4374,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 5aa8a80e19f042f459d08a544bf91f2f, type: 3}
       propertyPath: m_LocalRotation.w

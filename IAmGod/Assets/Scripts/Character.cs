@@ -40,22 +40,22 @@ public class Character : Targetable
     }
 
     private void HandleTargeting() {
-        if (target == null) { //if char has no target
+        if (target == null) { //if char has no target =
             timer += Time.deltaTime;
             if (timer > _roamTime) { //every <_roamTime> seconds there is no target
                 timer = 0f;
-                if (ally)
+                if (Ally && _home != null)
                     _nextPoint = RandomNavSphere(_home.position, 1f, 3);
                 else
-                    _nextPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);
-                Targetable potentialTarget = null;
-                if (Ally)
-                    potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, _detectionRange);
-                else
-                    potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
-                if (potentialTarget != null) {
-                    target = potentialTarget;
-                }                    
+                    _nextPoint = RandomNavSphere(gameObject.transform.position, 2f, 3);                          
+            }
+            Targetable potentialTarget = null;
+            if (Ally)
+                potentialTarget = GetClosestEnemy(GameManager.Instance.EnemyList, _detectionRange);
+            else
+                potentialTarget = GetClosestEnemy(GameManager.Instance.AllyList, Mathf.Infinity);
+            if (potentialTarget != null) {
+                target = potentialTarget;
             }
         } else { //if char has target
             if (Vector3.Distance(transform.position, target.Type == TargetType.Building ? target.GetComponent<Collider>().ClosestPoint(transform.position) : target.gameObject.transform.position) > _disengageRange)
@@ -99,6 +99,7 @@ public class Character : Targetable
             anim.SetBool("Dead", true);
             anim.SetBool("Attacking", false);
             Destroy(gameObject, 3f);
+            enabled = false;
         }            
     }
     public void DealDamage() //deal damage
@@ -147,12 +148,15 @@ public class Character : Targetable
         Vector3 currentPos = transform.position;
         foreach (Targetable t in enemies) {
             if (t == null)
-                break;
+                continue;
             float dist = Vector3.Distance(t.gameObject.transform.position, currentPos);
             if (dist < minDist) {
                 tMin = t;
                 minDist = dist;
             }
+        }
+        if (Ally) {
+            float m = minDist;
         }
         if (minDist < distance)
             return tMin;
