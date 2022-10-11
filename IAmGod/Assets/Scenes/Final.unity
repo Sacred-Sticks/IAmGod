@@ -539,7 +539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: ENEMIES.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _allySpawns.Array.size
@@ -547,7 +547,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _enemyLookup.Array.size
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _enemySpawns.Array.size
@@ -599,7 +599,7 @@ PrefabInstance:
       objectReference: {fileID: 6116455761600567733, guid: 2409f631d53894c4c9c4cbcb4abf59da, type: 3}
     - target: {fileID: 3711875921862254121, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}
       propertyPath: _enemyLookup.Array.data[1].enemyChance.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 786f5b6f44313604aa8f6abb1a359f27, type: 3}

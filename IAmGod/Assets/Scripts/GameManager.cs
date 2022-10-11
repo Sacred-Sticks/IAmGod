@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviour
             EndGame();
         _spawnRate = (int)(_spawnRate * 1.1f);
         if (_enemyLookup[Round] != null)
-            ENEMIES = _enemyLookup[Round].enemyChance;
+            UpdateOdds(_enemyLookup[Round].Enemies);
         SceneManager.LoadScene(GAME_SCENE);        
     }
     private void EndGame()
@@ -174,6 +174,6 @@ public class GameManager : MonoBehaviour
     }
     [System.Serializable]
     private class EnemyLookup {
-        public List<EnemyChance> enemyChance;
+        public List<EnemyChance> Enemies;
     }
 }
